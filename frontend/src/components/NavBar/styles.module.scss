@@ -1,0 +1,30 @@
+.nav {
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.logo {
+    display: inline-block;
+    img {
+        width: 150px;
+    }
+}
+.links {
+    .tag {
+        text-decoration: none;
+        color: black;
+        margin-left: 15px;
+        cursor: pointer;
+        
+        &:nth-child(3) {
+            cursor: default;
+            color: rgba(0, 0, 0, 0.4);
+        }
+    }
+    
+}

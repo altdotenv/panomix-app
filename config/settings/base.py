@@ -43,7 +43,14 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres:///panomixapp")
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env.str("DB_NAME"),
+        'USER': env.str("DB_USER"),
+        'PASSWORD': env.str("DB_PASSWORD"),
+        'HOST': env.str("DB_HOST"),
+        'PORT': 3306,
+    }
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
@@ -77,6 +84,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "panomixapp.users.apps.UsersConfig",
+    "panomixapp.workplace.apps.WorkplaceConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -271,12 +279,12 @@ SOCIALACCOUNT_ADAPTER = "panomixapp.users.adapters.SocialAccountAdapter"
 # django-reset-framework
 # -------------------------------------------------------------------------------
 # django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-    ),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-}
+# REST_FRAMEWORK = {
+#     "DEFAULT_AUTHENTICATION_CLASSES": (
+#         "rest_framework.authentication.SessionAuthentication",
+#         "rest_framework.authentication.TokenAuthentication",
+#     ),
+#     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+# }
 # Your stuff...
 # ------------------------------------------------------------------------------
