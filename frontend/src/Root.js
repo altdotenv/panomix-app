@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
-import store, { history } from "./store/configure";
+import store from "./store/configure";
 import App from './components/App/';
 
 const Root = () => {

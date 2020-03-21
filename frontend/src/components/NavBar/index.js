@@ -16,6 +16,7 @@ class NavBar extends Component {
                         <NavLink to="/features" className={styles.tag} >Features</NavLink>
                         <NavLink to="/pricing" className={styles.tag} onClick={ (event) => event.preventDefault() }>Pricing</NavLink>
                         <NavLink to="/login" className={styles.tag} >Login</NavLink>
+                        <NavLink to="/signup" className={styles.tag} >Sign up</NavLink>
                     </div>
                 </div>
             </nav>

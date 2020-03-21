@@ -1,29 +1,49 @@
-from django.contrib.auth import get_user_model
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .serializers import UserSerializer
+from . import serializers
 
-# User = get_user_model()
+import logging
+import json
+logger = logging.getLogger()
 
+class UserSignup(APIView):
 
-# class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet):
-#     serializer_class = UserSerializer
-#     queryset = User.objects.all()
-#     lookup_field = "username"
+    permission_classes = [AllowAny] 
 
-#     def get_queryset(self, *args, **kwargs):
-#         return self.queryset.filter(id=self.request.user.id)
+    def post(self, request):
 
-#     @action(detail=False, methods=["GET"])
-#     def me(self, request):
-#         serializer = UserSerializer(request.user, context={"request": request})
-#         return Response(status=status.HTTP_200_OK, data=serializer.data)
+        data = request.data
+        if set(['name', 'email', 'password', 'workplace']) != set(data.keys()):
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        workplace_name = data["workplace"]
+        data.update({"workplace":{"name":workplace_name}})
+        serialized = serializers.UserSerializer(data=data, context={'request':request})
 
-class UserCreateWorkplace(APIView):
+        if serialized.is_valid():
+            serialized.save()
+            return Response({"result":"success"}, status=status.HTTP_201_CREATED)
+        else:
+            logging.error(serialized.errors)
+            if serialized.errors.get("workplace") and serialized.errors.get("email"):
+                return Response({"result":"workplace email exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+            elif serialized.errors.get("workplace"):
+                return Response({"result":"workplace exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+            elif serialized.errors.get("email"):
+                return Response({"result":"email exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    pass
+class GoogleLogin(APIView):
+
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+
+        data = request.data
+        print(data)
 
 class GetUserWorkplaces(APIView):
 

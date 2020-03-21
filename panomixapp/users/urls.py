@@ -3,7 +3,7 @@ from . import views
 
 app_name = "users"
 urlpatterns = [
-    path("workplace/create", view=views.UserCreateWorkplace.as_view()),
+    path("signup", view=views.UserSignup.as_view()),
     path("workplaces", view=views.GetUserWorkplaces.as_view()),
-
+    path("google-login", view=views.GoogleLogin.as_view()),
 ]

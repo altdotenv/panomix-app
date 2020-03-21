@@ -1,17 +1,35 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
-
-
-class User(AbstractUser):
-
-    # First Name and Last Name do not cover name patterns
-    # around the globe.
-    name = models.CharField(_("Name of User"), blank=True, max_length=255)
-
-    def get_absolute_url(self):
-        return reverse("users:detail", kwargs={"username": self.username})
-
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+ 
+ 
+class UserManager(BaseUserManager):
+    def create_user(self, email, password=None):
+        if not email:
+            raise ValueError('Users must have an email address')
+ 
+        user = self.model(email=UserManager.normalize_email(email))
+ 
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+ 
+    def create_superuser(self, email, password):
+        u = self.create_user(email=email, password=password)
+        u.is_admin = True
+        u.save(using=self._db)
+        return u
+ 
+ 
+class User(AbstractBaseUser,  PermissionsMixin):
+    email = models.EmailField(verbose_name='email', max_length=255, unique=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    is_admin = models.BooleanField(default=False)
+    password = models.CharField(max_length=255, blank=True, null=True)
+ 
+    objects = UserManager()
+ 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+ 
     class Meta:
-        db_table = "user"
+        db_table='user'
