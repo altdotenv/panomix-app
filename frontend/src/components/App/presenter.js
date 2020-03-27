@@ -1,34 +1,32 @@
 import React from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 import Home from "../Home"
 import NavBar from "../NavBar"
 import Features from "../Features"
 import Login from "../Login"
 import Signup from "../Signup"
+import Dashboard from "../Dashboard"
+import Footer from "../Footer"
+import Terms from "../Terms"
+import Privacy from "../Privacy"
+import Contact from "../Contact"
+import PrivateNavBar from "../PrivateNavBar"
 
 const App = props => [
-    <NavBar key={0}/>,
-    <PublicRoutes key={1} />
-    // props.isLoggedIn ? null : <Redirect to="/" key={0} />,
-    // props.isLoggedIn ? <Header key={1} {...props} /> : null,
-    // props.isLoggedIn ? <PrivateRoutes key={3} selectedService={props.selectedService} /> : <PublicRoutes key={3} />,
-    // <Footer key={4} />
+    props.isLoggedIn ? <PrivateNavBar key={0}/> : <NavBar key={0}/>,
+    props.isLoggedIn ? <PrivateRoutes key={1} /> : <PublicRoutes key={1} />,
+    props.isLoggedIn ? null : <Footer key={2} />
 ]
 
 // App.propTypes = {
 //     isLoggedIn: PropTypes.bool.isRequired
 // }
 
-// const PrivateRoutes = props => (
-//     <Switch>
-//       <Route exact path="/" render={() => <Dashboard selectedService={props.selectedService} />} />
-//       <Route exact path="/settings" render={() => <UserSettings selectedService={props.selectedService} />} />
-//       <Route exact path="/source" render={() => <DataSource selectedService={props.selectedService} />} />
-//       {/* <Route exact path="/transformation" component={DataTransformation} /> */}
-//       <Route exact path="/campaigns" render={() => <Campaign selectedService={props.selectedService} />} />
-//       <Route exact path="/sales" render={() => <ProductSales selectedService={props.selectedService} />} />
-//     </Switch>
-// )
+const PrivateRoutes = () => (
+    <Switch>
+        <Route exact path="/app" component={Dashboard} />
+    </Switch>
+)
 
 const PublicRoutes = () => (
     <Switch>
@@ -36,8 +34,11 @@ const PublicRoutes = () => (
         <Route exact path="/features" component={Features} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/terms" component={Terms} />
+        <Route exact path="/privacy" component={Privacy} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/app" render={() => (<Redirect to="/" />)} />
     </Switch>
 )
   
 export default App;
-  

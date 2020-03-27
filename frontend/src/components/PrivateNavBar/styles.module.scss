@@ -1,0 +1,39 @@
+.nav {
+    width: 100%;
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px grey;
+
+    .leftNav {
+        width: 15%;
+        padding: 10px;
+        background-color: brown;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .logo {
+            display: inline-block;
+            img {
+                width: 120px;
+                @media only screen and (max-width: 768px) {
+                    width: 110px;
+                }          
+            }
+        }
+    }
+
+    .rightNav {
+        width: 85%;
+        background-color: grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 20px;
+        }
+    }
+}
+

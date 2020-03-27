@@ -7,7 +7,7 @@ class Container extends Component {
 
     state = {
         workplace: "",
-        has_workplace: true //for test
+        // has_workplace: true //for test
     }
 
     componentDidMount(){

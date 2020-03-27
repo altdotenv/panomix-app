@@ -1,0 +1,65 @@
+.container {
+    width: 100%;
+    height: calc(100vh - 60px);
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 50px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 450px;
+        .inputLabel {
+            margin-bottom: 5px;
+        }
+        .workspaceInput {
+            height: 20px;
+            margin-bottom: 15px;
+            padding: 0;
+            border: 1px solid #e5e5e5;
+            padding: 6px;
+            font-size: 14px;
+            &:focus {
+                border: 1px solid #00c18c;
+                outline: none;
+            }
+        }
+        .workspaceFailInput {
+            height: 20px;
+            margin-bottom: 5px;
+            padding: 0;
+            border: 1px solid red;
+            padding: 6px;
+            font-size: 14px;
+            &:focus {
+                outline: none;
+            }
+        }
+        .notExistComment {
+            color: red;
+            margin-bottom: 15px;
+        }
+        button {
+            height: 35px;
+            background-color: #00c18c;
+            border: 1px solid #00c18c;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 12px;
+        }
+        .signupLink {
+            color: #00c18c;
+            font-size: 12px;
+        }
+    }
+}

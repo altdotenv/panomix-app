@@ -7,10 +7,11 @@ import SignupWorkplace from "./presenter"
 class Container extends Component {
 
     state = {
-        "name": "",
-        "email": "",
-        "password": "",
-        "workplace": ""
+        // "name": "",
+        // "email": "",
+        // "password": "",
+        // "workplace": "",
+        "workplaceWithGoogle": ""
     }
 
     componentDidMount(){
@@ -20,12 +21,16 @@ class Container extends Component {
 
 
     componentDidUpdate(prevProps, prevState){
-        const { workplace_not_exist, email_not_exist } = this.props
-        if (prevState.workplace !== this.state.workplace){
-            workplace_not_exist()
-        } else if (prevState.email !== this.state.email){
-            email_not_exist()
+        const { workplace_not_exist, email_not_exist, workplace_with_google_not_exist, google_email_not_exist } = this.props
+        if (prevState.workplaceWithGoogle !== this.state.workplaceWithGoogle){
+            workplace_with_google_not_exist()
+            google_email_not_exist()
         }
+        // else if (prevState.email !== this.state.email){
+        //     email_not_exist()
+        // } else if (prevState.workplace !== this.state.workplace){
+        //     workplace_not_exist()
+        // }
     }
 
     render(){
@@ -35,52 +40,71 @@ class Container extends Component {
                 {...this.state}
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
+                onSignupGoogle={this.onSignupGoogle}
             />
         )
     }
 
     handleChange = event => {
         const { target: { name, value } } = event;
+        console.log(name, value)
         this.setState({
             [name]: value,
         })
     }
 
-    handleSubmit = event => {
-        const { name, email, password, workplace } = this.state
-        const { userSignup } = this.props
-        event.preventDefault()
-        userSignup(name, email, password, workplace)
+    // handleSubmit = event => {
+    //     const { name, email, password, workplace } = this.state
+    //     const { userSignup } = this.props
+    //     event.preventDefault()
+    //     userSignup(name, email, password, workplace)
+    // }
+
+    onSignupGoogle = result => {
+        const { workplaceWithGoogle } = this.state
+        const { userSignupWithGoogle } = this.props
+        if(workplaceWithGoogle && result){
+            userSignupWithGoogle(workplaceWithGoogle, result)
+        } 
     }
+
 }
 
 const mapStateToProps = state => {
-    const { user: { email_exist, is_workplace_exist, token } } = state;
+    const { user: { email_exist, is_workplace_exist, token, is_workplace_with_google_exist, google_email_exist } } = state;
     return {
         ...state,
-        email_exist,
-        is_workplace_exist,
-        token
+        // email_exist,
+        // is_workplace_exist,
+        token,
+        is_workplace_with_google_exist,
+        google_email_exist
     }
 }
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        userSignup: (name, email, password, workplace) => {
-            dispatch(userActions.userSignup(name, email, password, workplace));
-        },
-        checkWorkplace: workplace => {
-            dispatch(userActions.checkWorkplace(workplace));
-        },
-        workplace_not_exist: () => {
-            dispatch(userActions.workplace_not_exist())
-        },
-        email_not_exist: () => {
-            dispatch(userActions.email_not_exist())
-        },
+        // userSignup: (name, email, password, workplace) => {
+        //     dispatch(userActions.userSignup(name, email, password, workplace));
+        // },
+        // workplace_not_exist: () => {
+        //     dispatch(userActions.workplace_not_exist())
+        // },
+        // email_not_exist: () => {
+        //     dispatch(userActions.email_not_exist())
+        // },
         initialize_workplace: () => {
             dispatch(userActions.initialize_workplace())
+        },
+        workplace_with_google_not_exist: () => {
+            dispatch(userActions.workplace_with_google_not_exist())
+        },
+        userSignupWithGoogle: (workplace, result) => {
+            dispatch(userActions.userSignupWithGoogle(workplace, result))
+        },
+        google_email_not_exist: () => {
+            dispatch(userActions.google_email_not_exist())
         }
     }
 }
