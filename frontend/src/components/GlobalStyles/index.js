@@ -13,6 +13,9 @@ const globalStyles = createGlobalStyle`
     *{
         box-sizing: boder-box;
     }
+    button {
+        outline: none;
+    }
     body{
         font-family:Arial, 'Nanum Gothic', sans-serif;
         font-size: 14px;

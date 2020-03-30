@@ -1,3 +1,5 @@
+@import "../../layouts/variables";
+
 .container {
     width: 100%;
     height: calc(100vh - 60px);
@@ -18,20 +20,21 @@
         width: 450px;
         .inputLabel {
             margin-bottom: 5px;
+            color: $main-gray;
         }
-        .workspaceInput {
+        .workplaceInput {
             height: 20px;
             margin-bottom: 15px;
             padding: 0;
-            border: 1px solid #e5e5e5;
+            border: 1px solid $light-gray;
             padding: 6px;
             font-size: 14px;
             &:focus {
-                border: 1px solid #00c18c;
+                border: 1px solid $main-green;
                 outline: none;
             }
         }
-        .workspaceFailInput {
+        .workplaceFailInput {
             height: 20px;
             margin-bottom: 5px;
             padding: 0;
@@ -48,17 +51,18 @@
         }
         button {
             height: 35px;
-            background-color: #00c18c;
-            border: 1px solid #00c18c;
+            background-color: $main-green;
+            border: 1px solid $main-green;
             color: white;
             font-size: 14px;
             margin-bottom: 15px;
         }
         p {
             font-size: 12px;
+            color: $main-gray;
         }
         .signupLink {
-            color: #00c18c;
+            color: $main-green;
             font-size: 12px;
         }
     }

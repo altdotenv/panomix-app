@@ -1,3 +1,5 @@
+@import "../../layouts/variables";
+
 .terms {
     width: 100%;
     display: flex;
@@ -40,16 +42,6 @@
             margin: 0 3.7em;
         }
     }
-    @media (min-width: 576px){
-        max-width: 400px;
-    }
-    @media (min-width: 768px){
-        max-width: 720px;
-    }
-    @media (min-width: 992px){
-        max-width: 960px;
-    }
-    @media (min-width: 1200px){
-        max-width: 1140px;
-    }
+
+    @include containerSize;
 }

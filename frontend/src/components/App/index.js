@@ -21,7 +21,7 @@ const mapStateToProps = state => {
   const { user: { isLoggedIn, workplace } } = state;
   return {
     isLoggedIn,
-    workplace
+    workplace,
   }
 }
 

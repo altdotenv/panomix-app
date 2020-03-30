@@ -41,15 +41,22 @@ class Container extends Component {
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
                 onSignupGoogle={this.onSignupGoogle}
+                handleCheckboxChange={this.handleCheckboxChange}
             />
         )
     }
 
     handleChange = event => {
         const { target: { name, value } } = event;
-        console.log(name, value)
         this.setState({
             [name]: value,
+        })
+    }
+
+    handleCheckboxChange = event => {
+        const { target : { name, checked } } = event;
+        this.setState({
+            [name]: checked,
         })
     }
 

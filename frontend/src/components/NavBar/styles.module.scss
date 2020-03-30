@@ -1,3 +1,5 @@
+@import "../../layouts/variables";
+
 .nav {
     width: 100%;
     display: flex;
@@ -5,28 +7,14 @@
     font-size: 15px;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 3px grey;
+    box-shadow: 0 0 3px gray;
     padding: 15px 0;
 
     .container {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        @media (max-width: 576px){
-            max-width: 400px;
-        }
-        @media (min-width: 576px){
-            max-width: 540px;
-        }
-        @media (min-width: 768px){
-            max-width: 720px;
-        }
-        @media (min-width: 992px){
-            max-width: 960px;
-        }
-        @media (min-width: 1200px){
-            max-width: 1140px;
-        }
+        @include containerSize;
 
         .leftNav {
             display: flex;
@@ -64,24 +52,6 @@
             color: rgba(0, 0, 0, 0.4);
         }
     }
-    .greenFilledTag {
-        text-decoration: none;
-        cursor: pointer;
-        color: white;
-        border: 1px solid #00c18c;
-        background-color: #00c18c;
-        border-radius: 30px;
-        padding: 5px 15px;
-    }
-    .greenRoundTag {
-        text-decoration: none;
-        color: #00c18c;
-        margin-left: 20px;
-        border: 1px solid #00c18c;
-        cursor: pointer;
-        border-radius: 30px;
-        padding: 5px 15px;
-    }
     @media (max-width: 768px){
         display: none;
     }   
@@ -94,6 +64,7 @@
 }
 
 .toggledLinks {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,23 +81,41 @@
             color: rgba(0, 0, 0, 0.4);
         }
     }
-    .greenFilledTag {
-        margin: 10px 0px;
-        text-decoration: none;
-        cursor: pointer;
-        color: white;
-        border: 1px solid #00c18c;
-        background-color: #00c18c;
-        border-radius: 30px;
-        padding: 5px 15px;
+}
+
+.dropdown {
+    position: absolute;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 0 3px grey;
+    background-color: white;
+    z-index: 1;
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        background-color: #e6e6e6;
+        position: initial;
+        box-shadow: initial;
     }
-    .greenRoundTag {
-        margin: 10px 0px;
-        text-decoration: none;
-        color: #00c18c;
-        border: 1px solid #00c18c;
-        cursor: pointer;
-        border-radius: 30px;
-        padding: 5px 15px;
+    
+    .dropdownLink {
+        color: black;
+        margin-bottom: 15px;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
+
+.greenFilledTag {
+    margin: 0px 5px;
+    @include greenFilledTag();
+}
+.greenRoundTag {
+    margin: 0px 5px;
+    @include greenRoundTag();
+}
+

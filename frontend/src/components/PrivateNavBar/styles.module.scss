@@ -1,15 +1,16 @@
+@import "../../layouts/variables";
+
 .nav {
     width: 100%;
     display: flex;
     font-size: 15px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     box-shadow: 0 0 3px grey;
-
     .leftNav {
-        width: 15%;
-        padding: 10px;
-        background-color: brown;
+        width: 150px;
+        height: 50px;
+        background-color: $main-gray;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -26,13 +27,15 @@
     }
 
     .rightNav {
-        width: 85%;
-        background-color: grey;
+        height: 50px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
+        padding-right: 15px;
         img {
-            width: 20px;
+            width: 25px;
+            margin-left: 5px;
+            cursor: pointer;
         }
     }
 }

@@ -1,3 +1,5 @@
+@import "../../layouts/variables";
+
 .signup {
     width: 100%;
     height: calc(100vh - 60px);
@@ -20,29 +22,13 @@
             width: 450px;
             .inputLabel {
                 margin-bottom: 5px;
+                color: $main-gray;
             }
             .greenInput {
-                height: 20px;
-                margin-bottom: 15px;
-                padding: 0;
-                border: 1px solid #e5e5e5;
-                padding: 6px;
-                font-size: 14px;
-                &:focus {
-                    border: 1px solid #00c18c;
-                    outline: none;
-                }
+                @include greenInputBox;
             }
             .redInput {
-                height: 20px;
-                margin-bottom: 5px;
-                padding: 0;
-                border: 1px solid red;
-                padding: 6px;
-                font-size: 14px;
-                &:focus {
-                    outline: none;
-                }
+                @include redInputBox;
             }
             .notExistComment {
                 color: red;
@@ -50,68 +36,26 @@
             }
             button {
                 height: 35px;
-                background-color: #00c18c;
-                border: 1px solid #00c18c;
+                background-color: $main-green;
+                border: 1px solid $main-green;
                 color: white;
                 font-size: 14px;
                 margin-bottom: 15px;
             }
             p {
                 font-size: 12px;
+                color: $main-gray;
             }
             .loginLink {
-                color: #00c18c;
+                color: $main-green;
                 font-size: 12px;
             }
-            .googleLoginButton {
-                cursor: pointer;
-                height: 35px;
-                display: flex;
-                justify-self: center;
-                align-items: center;
-                margin-bottom: 15px;
-                border: 1px solid #00c18c;
-                font-weight: bold;
-                img {
-                    height: calc(100% - 10px);
-                    margin: 10px;
-                }
-                p {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: calc(100% - 20px);
-                    text-align: center;
-                    background-color: #00c18c;
-                    height: 100%;
-                    color: white;
-                    font-size: 14px;
-                }
+            .googleSignupButton {
+                @include googleActiveButton;
+
             }
-            .googleLoginButtonDisabled {
-                cursor: default;
-                height: 35px;
-                display: flex;
-                justify-self: center;
-                align-items: center;
-                margin-bottom: 15px;
-                border: 1px solid #e5e5e5;
-                font-weight: bold;
-                img {
-                    height: calc(100% - 10px);
-                    margin: 10px;
-                }
-                p {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: calc(100% - 20px);
-                    text-align: center;
-                    background-color: #e5e5e5;
-                    height: 100%;
-                    color: white;
-                    font-size: 14px;
-                }
+            .googleSignupButtonDisabled {
+                @include googleDisableButton;
             }
         }
         .hrText {

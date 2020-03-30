@@ -1,0 +1,85 @@
+@mixin greenFilledTag {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    border: 1px solid #00c18c;
+    background-color: #00c18c;
+    border-radius: 30px;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+@mixin greenRoundTag {
+    text-decoration: none;
+    color: #00c18c;
+    border: 1px solid #00c18c;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+@mixin googleActiveButton {
+    cursor: pointer;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid $main-green;
+    img {
+        width: 16px;
+        margin: 10px;
+    }
+    p {
+        color: $main-gray;
+        font-size: 14px;
+    }
+}
+
+@mixin googleDisableButton {
+    cursor: default;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid $light-gray;
+    img {
+        width: 16px;
+        margin: 10px;
+    }
+    p {
+        color: $main-gray;
+        font-size: 14px;
+    }
+}
+
+@mixin greenInputBox {
+    height: 16px;
+    margin-bottom: 5px;
+    padding: 0;
+    border: 1px solid $light-gray;
+    padding: 6px;
+    font-size: 14px;
+    &:focus {
+        border: 1px solid $main-green;
+        outline: none;
+    }
+}
+
+@mixin redInputBox {
+    height: 20px;
+    margin-bottom: 5px;
+    padding: 0;
+    border: 1px solid red;
+    padding: 6px;
+    font-size: 14px;
+    &:focus {
+        outline: none;
+    }
+}
+
+@mixin greenCheckbox {
+    margin-bottom: 15px;
+}

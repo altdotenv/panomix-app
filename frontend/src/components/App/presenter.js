@@ -13,7 +13,7 @@ import Contact from "../Contact"
 import PrivateNavBar from "../PrivateNavBar"
 
 const App = props => [
-    props.isLoggedIn ? <PrivateNavBar key={0}/> : <NavBar key={0}/>,
+    props.isLoggedIn ? <PrivateNavBar key={0}/> : <NavBar  key={0}/>,
     props.isLoggedIn ? <PrivateRoutes key={1} /> : <PublicRoutes key={1} />,
     props.isLoggedIn ? null : <Footer key={2} />
 ]

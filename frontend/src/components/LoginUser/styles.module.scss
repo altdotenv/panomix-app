@@ -1,7 +1,9 @@
+@import "../../layouts/variables";
+
 .login {
     width: 100%;
     height: calc(100vh - 60px);
-    min-height: 650px;
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,29 +16,8 @@
             margin: 50px;
         }
         .googleLoginButton {
+            @include googleDisableButton;
             cursor: pointer;
-            height: 35px;
-            display: flex;
-            justify-self: center;
-            align-items: center;
-            margin-bottom: 15px;
-            border: 1px solid #00c18c;
-            font-weight: bold;
-            img {
-                height: calc(100% - 10px);
-                margin: 10px;
-            }
-            p {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: calc(100% - 20px);
-                text-align: center;
-                background-color: #00c18c;
-                height: 100%;
-                color: white;
-                font-size: 14px;
-            }
         }
         .notExistComment {
             color: red;

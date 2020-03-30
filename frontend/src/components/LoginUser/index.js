@@ -5,10 +5,6 @@ import LoginUser from "./presenter";
 
 class Container extends Component {
 
-    state = {
-        google_email_exist: true
-    }
-
     render(){
         return (
             <LoginUser 
@@ -20,10 +16,10 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => {
-    const { user : { google_email_exist } } = state
+    const { user : { google_not_email_exist } } = state
     return {
         ...state,
-        google_email_exist
+        google_not_email_exist
     }
 }
 

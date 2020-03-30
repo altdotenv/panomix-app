@@ -189,7 +189,8 @@ const initialState = {
     token: localStorage.getItem("jwt"),
     workplace: localStorage.getItem("workplace"),
     has_workplace: false,
-    email_exist: false
+    email_exist: false,
+    google_email_not_exist: false
 };
   
 //reducer
@@ -224,7 +225,7 @@ export default function reducer(state = initialState, action) {
       case GOOGLE_EMAIL_EXIST:
         return {...state, google_email_exist: true}
       case GOOGLE_EMAIL_NOT_EXIST:
-        return {...state, google_email_exist: false}
+        return {...state, google_not_email_exist: true}
       default:
         return state; 
     }

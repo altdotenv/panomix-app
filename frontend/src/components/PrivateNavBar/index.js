@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux"
+import * as userActions from "store/modules/user";
 import styles from "./styles.module.scss";
 import MainLogo from "assets/images/panomix_logo_mix-06.png"
 import LogoutIcon from "assets/images/icon-03.png"
@@ -9,7 +11,7 @@ class PrivateNavBar extends Component {
 
     render(){
         return (
-            <nav className={styles.nav}>
+            <div className={styles.nav}>
                 <div className={styles.leftNav}>
                     <div className={styles.logo}>
                         <NavLink to="/"><img src={MainLogo} alt="logo" /></NavLink>
@@ -22,12 +24,20 @@ class PrivateNavBar extends Component {
                         <img onClick={() => this.props.logout()} src={LogoutIcon} />
                     </div>
                 </div>
-            </nav>
+            </div>
             
         )
     }
 }
 
-export default PrivateNavBar;
+const mapDispatchToProps = dispatch =>{
+    return {
+        logout: () => {
+            dispatch(userActions.logout())
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(PrivateNavBar);
 
 

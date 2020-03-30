@@ -1,13 +1,14 @@
 import React from "react"
 import styles from "./styles.module.scss"
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login'
 import { Link } from "react-router-dom"
 import GoogleLogo from "assets/images/google-logo3.png"
+import Checkbox from "components/Checkbox"
 
 const SignupWorkplace = props => (
     <div className={styles.signup}>
         <div className={styles.container}>
-            <h2>Create a new Workspace</h2>
+            <h2>Create a New Workplace</h2>
             {/* <form onSubmit={props.handleSubmit}>
                 <label className={styles.inputLabel}>Name</label>
                 <input
@@ -40,7 +41,7 @@ const SignupWorkplace = props => (
                     onChange={props.handleChange}
                     required
                 />
-                <label className={styles.inputLabel}>Workspace Name</label>
+                <label className={styles.inputLabel}>Workplace Name</label>
                 <input
                     type="text"
                     className={
@@ -56,7 +57,7 @@ const SignupWorkplace = props => (
             </form>
             <hr className={styles.hrText} data-content="Or" /> */}
             <form>
-                <label className={styles.inputLabel}>Workspace Name</label>
+                <label className={styles.inputLabel}>Workplace Name</label>
                 <input
                     type="text"
                     className={
@@ -68,14 +69,19 @@ const SignupWorkplace = props => (
                     required
                 />
                 {props.is_workplace_with_google_exist ? <p className={styles.notExistComment}>Workplace name already exist.</p> : null }
+                <div className={styles.termsCheckDiv}>
+                    <Checkbox name="termsChecked" onChange={props.handleCheckboxChange} />
+                    <Link to="login" className={styles.loginLink}>terms of service</Link>
+                </div>
+
                 <GoogleLogin
                     clientId="50053165531-unai3d7bikknt31vnvp71d3gv14jectv.apps.googleusercontent.com"
                     render={renderProps => (
                         <div 
-                            onClick={props.workplaceWithGoogle ? renderProps.onClick : null}
+                            onClick={props.workplaceWithGoogle && props.termsChecked ? renderProps.onClick : null}
                             disabled={renderProps.disabled}
                             className={
-                                props.workplaceWithGoogle ?  styles.googleLoginButton : styles.googleLoginButtonDisabled
+                                props.workplaceWithGoogle && props.termsChecked ?  styles.googleSignupButton : styles.googleSignupButtonDisabled
                             }
                         >
                             <img src={GoogleLogo} alt="google-logo" />
@@ -89,7 +95,7 @@ const SignupWorkplace = props => (
                     // uxMode="redirect"
                 />
                 {props.google_email_exist ? <p className={styles.notExistComment}>Email already exist.</p> : null}
-                <p>Already have a workspace? <Link to="login" className={styles.loginLink}>Login to your workspace</Link></p>
+                <p>Already have a workplace? <Link to="login" className={styles.loginLink}>Login to your workplace</Link></p>
             </form>
         </div>
     </div>

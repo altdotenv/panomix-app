@@ -7,7 +7,7 @@ import GoogleLogo from "assets/images/google-logo3.png"
 const LoginUser = props => (
     <div className={styles.login}>
         <div className={styles.container}>
-            <h2>Login to Workspace</h2>
+            <h2>Login to Workplace</h2>
             <GoogleLogin
                 clientId="50053165531-unai3d7bikknt31vnvp71d3gv14jectv.apps.googleusercontent.com"
                 render={renderProps => (
@@ -25,7 +25,7 @@ const LoginUser = props => (
                 redirectUri={window.location.href}
                 disabled={props.workplaceWithGoogle ? false : true}
             />
-            {props.google_email_exist ? null : <p className={styles.notExistComment}>Check your Workspace or Email.</p> }
+            {props.google_not_email_exist ? <p className={styles.notExistComment}>Check your Workplace or Email.</p> : null }
         </div>
 
     </div>

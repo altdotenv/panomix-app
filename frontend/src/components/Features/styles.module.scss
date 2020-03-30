@@ -1,3 +1,5 @@
+@import "../../layouts/variables";
+
 .features {
     width: 100%;
     display: flex;
@@ -14,12 +16,12 @@
         padding: 1.5rem;
         &:first-child {
             background: rgb(2,0,36);
-            background: linear-gradient(to right, #d6ebe4, #00c18c);
+            background: linear-gradient(to right, #d6ebe4, $main-green);
             color: white;
         }
         &:nth-child(3) {
             min-height: 200px;
-            background: linear-gradient(to right, #d6ebe4, #00c18c);
+            background: linear-gradient(to right, #d6ebe4, $main-green);
         }
         &:last-child {
             min-height: 350px;
@@ -67,21 +69,8 @@
                     font-size: 15px;
                 }  
             }
-            @media (max-width: 576px){
-                max-width: 400px;
-            }    
-            @media (min-width: 576px){
-                max-width: 540px;
-            }
-            @media (min-width: 768px){
-                max-width: 720px;
-            }
-            @media (min-width: 992px){
-                max-width: 960px;
-            }
-            @media (min-width: 1200px){
-                max-width: 1140px;
-            }
+            
+            @include containerSize;
 
             .subLink {
                 font-size: 20px;
@@ -121,7 +110,7 @@
                 flex-direction: column;
                 h6 {
                     font-size: 20px;
-                    color: #3c3c3b;
+                    color: $main-gray;
                     margin-bottom: 20px;
                     font-weight: bold;
                 }
@@ -137,7 +126,7 @@
                     align-items: center;
                     max-width: 240px;
                     height: 180px;
-                    border: 1px solid #e5e5e5;
+                    border: 1px solid $light-gray;
                     padding: 30px;
                     margin: 30px;
                     & > img {

@@ -1,0 +1,83 @@
+@import "../../layouts/variables";
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+    .leftDiv {
+        width: 150px;
+        background-color: $main-gray;
+        .navRow {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            img {
+                width: 20px;
+                margin-right: 5px;
+            }
+            p {
+                color: white;
+            }
+        }
+        
+    }
+    .rightDiv {
+        width: calc(100% - 150px);
+        display: flex;
+        justify-content: center;
+        padding: 50px 0px;
+        .container {
+            display: inline-grid;
+            grid-gap: 5px;
+            grid-template-rows: 200px;
+
+            @media (min-width: 576px){
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @media (min-width: 768px){
+                grid-template-columns: repeat(3, 1fr);
+            }
+            @media (min-width: 1200px){
+                grid-template-columns: repeat(4, 1fr);    
+            }
+            .gridCell {
+                width: 180px;
+                height: 180px;
+                border: 1px solid #e6e6e6;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .imgDiv {
+                    display: flex;
+                    align-items: center;
+                    max-width: 150px;
+                    min-height: 100px;
+                }
+                img {
+                    display: inline-block;
+                    width: 100%;
+                }
+                .buttonWrapper {
+                    font-size: 12px;
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    .greenBorderButton {
+                        padding: 5px 10px;
+                        margin-right: 10px;
+                        border: 1px solid $main-green;
+                        border-radius: 30px;
+                        color: $main-green;
+                    }
+                    .grayBorderButton {
+                        padding: 5px 10px;
+                        border: 1px solid $main-gray;
+                        border-radius: 30px;
+                        color: $main-gray;
+                    }
+                }
+            }
+        }
+    }
+
+}

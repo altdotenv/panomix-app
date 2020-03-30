@@ -7,12 +7,14 @@ import MenuIcon from '@material-ui/icons/Menu';
 class NavBar extends Component {
 
     state = {
-        isToggleOn:false
+        isToggleOn:false,
+        openDropdown: false,
     };
 
     componentDidMount(){
         this.setState({
-            isToggleOn:false
+            isToggleOn:false,
+            openDropdown: false
         })
     }
 
@@ -31,7 +33,13 @@ class NavBar extends Component {
                     </div>
                     <div className={styles.rightNav}>
                         <div className={styles.links}>
-                            <NavLink to="/login" className={styles.greenFilledTag} >Launch Panomix</NavLink>
+                            <button className={styles.greenFilledTag} onClick={() => this.toggleDropdown()}>Launch Panomix</button>
+                            {this.state.openDropdown ? (
+                                <div className={styles.dropdown}>
+                                    <NavLink to="/login" className={styles.dropdownLink} onClick={() => this.toggleDropdown()} >Login to Another Workplace</NavLink>
+                                    <NavLink to="/signup" className={styles.dropdownLink} onClick={() => this.toggleDropdown()}>Create a New Workplace</NavLink>
+                                </div>
+                            ) : null}
                             <NavLink to="/contact" className={styles.greenRoundTag} >Contact Us</NavLink>
                         </div>
                         <div className={styles.toggleNav}>
@@ -43,7 +51,13 @@ class NavBar extends Component {
                     <div className={styles.toggledLinks}>
                         <NavLink to="/features" className={styles.tag} >Features</NavLink>
                         <NavLink to="/pricing" className={styles.tag} onClick={ (event) => event.preventDefault() }>Pricing</NavLink>
-                        <NavLink to="/login" className={styles.greenFilledTag} >Launch Panomix</NavLink>
+                        <button className={styles.greenFilledTag} onClick={() => this.toggleDropdown()}>Launch Panomix</button>
+                        {this.state.openDropdown ? (
+                            <div className={styles.dropdown}>
+                                <NavLink to="/login" className={styles.dropdownLink} onClick={() => this.toggleDropdown()} >Login to Another Workplace</NavLink>
+                                <NavLink to="/signup" className={styles.dropdownLink} onClick={() => this.toggleDropdown()}>Create a New Workplace</NavLink>
+                            </div>
+                        ) : null}
                         <NavLink to="/contact" className={styles.greenRoundTag} >Contact Us</NavLink>
                     </div>
                 : null}
@@ -56,7 +70,13 @@ class NavBar extends Component {
         this.setState(prevState => ({
           isToggleOn: !prevState.isToggleOn
         }));
-      }    
+    }
+
+    toggleDropdown(){
+        this.setState(prevState => ({
+            openDropdown: !prevState.openDropdown,
+        }))
+    }
 
 }
 
