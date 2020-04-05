@@ -8,5 +8,6 @@ class UserAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "email",
-        "is_admin",
+        "is_superuser",
+        "is_active"
     )

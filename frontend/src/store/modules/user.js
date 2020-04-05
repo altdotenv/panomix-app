@@ -14,6 +14,11 @@ const WORKPLACE_WITH_GOOGLE_NOT_EXIST = "user/WORKPLACE_WITH_GOOGLE_NOT_EXIST"
 const WORKPLACE_WITH_GOOGLE_EXIST = "user/WORKPLACE_WITH_GOOGLE_EXIST"
 const GOOGLE_EMAIL_EXIST = "user/GOOGLE_EMAIL_EXIST"
 const GOOGLE_EMAIL_NOT_EXIST = "user/GOOGLE_EMAIL_NOT_EXIST"
+const GOOGLE_EMAIL_NOT_EXIST_FALSE = "user/GOOGLE_EMAIL_NOT_EXIST_FALSE"
+const SAVE_NOT_REGISTERED_EMAIL = "user/SAVE_NOT_REGISTERED_EMAIL"
+const DELETE_NOT_REGISTERED_EMAIL = "user/DELETE_NOT_REGISTERED_EMAIL"
+const SEND_MAIL_REQUEST = "user/SEND_MAIL_REQUEST"
+const SEND_MAIL_SUCCESS = "user/SEND_MAIL_SUCCESS"
 
 //Action Creators
 export const save_workplace = (workplace) => ({ type: SAVE_WORKPLACE, workplace })
@@ -29,6 +34,11 @@ export const workplace_with_google_not_exist = () =>({ type: WORKPLACE_WITH_GOOG
 export const workplace_with_google_exist = () =>({ type: WORKPLACE_WITH_GOOGLE_EXIST })
 export const google_email_exist = () => ({ type: GOOGLE_EMAIL_EXIST })
 export const google_email_not_exist = () => ({ type: GOOGLE_EMAIL_NOT_EXIST })
+export const google_email_not_exist_false = () => ({ type: GOOGLE_EMAIL_NOT_EXIST_FALSE })
+export const save_not_registered_email = (email) => ({ type:SAVE_NOT_REGISTERED_EMAIL, email})
+export const delete_not_registered_email = () => ({ type:SAVE_NOT_REGISTERED_EMAIL})
+export const send_mail_request = () => ({ type:SEND_MAIL_REQUEST })
+export const send_mail_success = () => ({ type:SEND_MAIL_SUCCESS })
 
 //Api Actions
 export function checkWorkplace(workplace){
@@ -165,24 +175,54 @@ export function onLoginGoogle(result){
       })
     })
     .then(response => {
-      if(response.status === 200 || response.status === 401){
+      if(response.status === 200 || response.status === 201 || response.status === 202){
         return response.json()
       } else {
         throw Error(response.statusText)
       }
     })
     .then(json => {
-      if (json.message === "Wrong Token" || json.message === "Unauthorized User"){
-        dispatch(google_email_not_exist())
-      } else {
+      if (json.access_token){
         dispatch(save_token(json.access_token))
         history.push("/app")
+        // dispatch(google_email_not_exist())
+        // setTimeout(() => {
+        //   dispatch(google_email_not_exist_false())
+        // }, 5000)
+      } else {
+        dispatch(save_not_registered_email(json.email))
+        // history.push("/login/confirm")
       }
     })
     .catch(error => console.log(error))
   }
 }
 
+export function sendRequestMail(userEmail){
+  return function (dispatch, getState){
+    dispatch(send_mail_request())
+    const { user : { workplace } } = getState()
+    fetch(`/api/users/send-email`,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        workplace,
+        email: userEmail
+      })
+    })
+    .then(response => {
+      if(response.status === 200){
+        dispatch(send_mail_success())
+        history.push("/login/request/success")
+      } else {
+        throw Error(response.statusText)
+      }
+    })
+    .catch(error => console.log(error))
+  }
+}
 //initial state
 const initialState = {
     isLoggedIn: localStorage.getItem('jwt') ? true : false,
@@ -190,7 +230,9 @@ const initialState = {
     workplace: localStorage.getItem("workplace"),
     has_workplace: false,
     email_exist: false,
-    google_email_not_exist: false
+    google_email_not_exist: false,
+    login_request_sended: false,
+    not_registered_email: null
 };
   
 //reducer
@@ -226,6 +268,16 @@ export default function reducer(state = initialState, action) {
         return {...state, google_email_exist: true}
       case GOOGLE_EMAIL_NOT_EXIST:
         return {...state, google_not_email_exist: true}
+      case GOOGLE_EMAIL_NOT_EXIST_FALSE:
+        return {...state, google_not_email_exist: false}
+      case SAVE_NOT_REGISTERED_EMAIL:
+        return {...state, not_registered_email: action.email}
+      case DELETE_NOT_REGISTERED_EMAIL:
+        return {...state, not_registered_email: null}
+      case SEND_MAIL_REQUEST:
+        return {...state, loading: true}
+      case SEND_MAIL_SUCCESS:
+        return {...state, loading: false}
       default:
         return state; 
     }

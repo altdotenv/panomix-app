@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 import { composeWithDevTools } from  "redux-devtools-extension";
 import { connectRouter, routerMiddleware} from "connected-react-router";
 import user from "./modules/user"
+import dashboard from "./modules/dashboard"
 
 const env = process.env.NODE_ENV;
 
@@ -19,6 +20,7 @@ if (env === 'development'){
 const reducer = history =>
   combineReducers({
     user,
+    dashboard,
     router: connectRouter(history)
 });
 

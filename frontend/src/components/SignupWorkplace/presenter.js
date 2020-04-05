@@ -56,7 +56,7 @@ const SignupWorkplace = props => (
                 <button type="submit" className={styles.signInButton}>Continue</button>
             </form>
             <hr className={styles.hrText} data-content="Or" /> */}
-            <form>
+            <form onSubmit={props.handleSubmit}>
                 <label className={styles.inputLabel}>Workplace Name</label>
                 <input
                     type="text"

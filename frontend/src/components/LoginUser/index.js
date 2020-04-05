@@ -5,6 +5,11 @@ import LoginUser from "./presenter";
 
 class Container extends Component {
 
+    componentDidMount(){
+        const { google_email_not_exist_false } = this.props;
+        google_email_not_exist_false();
+    }
+
     render(){
         return (
             <LoginUser 
@@ -16,10 +21,11 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => {
-    const { user : { google_not_email_exist } } = state
+    const { user : { google_not_email_exist, not_registered_email } } = state
     return {
         ...state,
-        google_not_email_exist
+        google_not_email_exist,
+        not_registered_email
     }
 }
 
@@ -27,6 +33,9 @@ const mapDispatchToProps = dispatch =>{
     return {
         onLoginGoogle: result => {
             dispatch(userActions.onLoginGoogle(result))
+        },
+        google_email_not_exist_false: () => {
+            dispatch(userActions.google_email_not_exist_false())
         }
     }
 }

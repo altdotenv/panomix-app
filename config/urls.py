@@ -2,9 +2,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import url
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
+from panomixapp import views
 
 urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
@@ -18,6 +20,11 @@ urlpatterns += [
     path("api/workplace/", include("panomixapp.workplace.urls")),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
+    path("testemail/", TemplateView.as_view(template_name='email/request_to_host.html', extra_context={"user_email":"jisu.han3201@gmail.com"}))
+]
+
+urlpatterns += [
+    url(r'^', views.ReactAppView.as_view()),
 ]
 
 if settings.DEBUG:

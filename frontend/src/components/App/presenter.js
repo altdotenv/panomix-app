@@ -11,6 +11,8 @@ import Terms from "../Terms"
 import Privacy from "../Privacy"
 import Contact from "../Contact"
 import PrivateNavBar from "../PrivateNavBar"
+import Slack from "../Slack"
+import SendEmailSuccess from "../SendEmailSuccess"
 
 const App = props => [
     props.isLoggedIn ? <PrivateNavBar key={0}/> : <NavBar  key={0}/>,
@@ -25,6 +27,7 @@ const App = props => [
 const PrivateRoutes = () => (
     <Switch>
         <Route exact path="/app" component={Dashboard} />
+        <Route exact path="/app/connect/slack" component={Slack} />
     </Switch>
 )
 
@@ -33,6 +36,7 @@ const PublicRoutes = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/features" component={Features} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/login/request/success" component={SendEmailSuccess} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/terms" component={Terms} />
         <Route exact path="/privacy" component={Privacy} />

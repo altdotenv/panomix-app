@@ -10,3 +10,6 @@ class WorkplaceSerializer(serializers.ModelSerializer):
             "id",
             "name"
         )
+        extra_kwargs = {
+            'name': {'validators': []},
+        }

@@ -83,3 +83,28 @@
 @mixin greenCheckbox {
     margin-bottom: 15px;
 }
+
+@mixin greenRectangleButton {
+    cursor: pointer;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00c18c;
+    border: 1px solid #00c18c;
+    color: white;
+}
+
+@mixin grayRectangleButton {
+    cursor: pointer;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $light-gray;
+   p {
+        color: black;
+        font-size: 14px;
+    }
+
+}

@@ -60,12 +60,9 @@ class Container extends Component {
         })
     }
 
-    // handleSubmit = event => {
-    //     const { name, email, password, workplace } = this.state
-    //     const { userSignup } = this.props
-    //     event.preventDefault()
-    //     userSignup(name, email, password, workplace)
-    // }
+    handleSubmit = event => {
+        event.preventDefault()
+    }
 
     onSignupGoogle = result => {
         const { workplaceWithGoogle } = this.state

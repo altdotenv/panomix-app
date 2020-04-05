@@ -2,10 +2,14 @@ import React from 'react';
 import styles from "./styles.module.scss";
 import { GoogleLogin } from 'react-google-login';
 import GoogleLogo from "assets/images/google-logo3.png"
+import SendEmailToHost from "../SendEmailToHost"
 
 
 const LoginUser = props => (
     <div className={styles.login}>
+        {props.not_registered_email ?
+            <SendEmailToHost />
+        :
         <div className={styles.container}>
             <h2>Login to Workplace</h2>
             <GoogleLogin
@@ -27,7 +31,8 @@ const LoginUser = props => (
             />
             {props.google_not_email_exist ? <p className={styles.notExistComment}>Check your Workplace or Email.</p> : null }
         </div>
-
+        }
+        
     </div>
 )
 

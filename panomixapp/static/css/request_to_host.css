@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.main {
+    width: 400px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 200px;
+    margin-bottom: 50px;
+}
+p {
+    font-size: 14px;
+    margin-bottom: 50px;
+}
+
+strong {
+    color: #00c18c;
+}
+
+.acceptButton {
+    width: 150px;
+    background-color: #00c18c;
+    border: 1px solid #00c18c;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+.denyButton {
+    width: 150px;
+    border: 1px solid #3c3c3b;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 15px;
+}

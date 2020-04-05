@@ -1,0 +1,32 @@
+@import "../../layouts/variables";
+
+.sendEmailToHost {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .container {
+        width: 400px;
+        p {
+            text-align: center;
+            margin-bottom: 15px;
+            strong {
+                color: $main-green;
+            }
+            &:last-child {
+                margin-bottom: 50px;
+            }
+        }
+        .greenRectangleButton {
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 5px;
+            @include greenRectangleButton;
+        }
+        .grayRectangleButton {
+            width: 100%;
+            @include grayRectangleButton;
+        }
+    }    
+}

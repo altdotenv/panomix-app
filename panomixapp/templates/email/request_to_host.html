@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}panomixapp{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="main">
+            <p><strong>{{ user_email }}</strong> sent request mail to access <strong>{{ workplace }}</strong></p>
+            <a class="acceptButton" href="http://{{ domain }}/api/users/activate/{{ uid }}/{{ token }}">Accept</a>
+        </div>
+    </div> 
+  </body>
+</html>
