@@ -8,20 +8,16 @@ from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
 from panomixapp import views
 
-urlpatterns = [
-    path(settings.ADMIN_URL, admin.site.urls),
-    # User management
-    path("accounts/", include("allauth.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # API URLS
-urlpatterns += [
+urlpatterns = [
     # API base url
+    path(settings.ADMIN_URL, admin.site.urls),
     path("api/users/", include("panomixapp.users.urls")),
     path("api/workplace/", include("panomixapp.workplace.urls")),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
-    path("testemail/", TemplateView.as_view(template_name='email/request_to_host.html', extra_context={"user_email":"jisu.han3201@gmail.com"}))
-]
+    path("testemail/", TemplateView.as_view(template_name='email/request_to_host.html', extra_context={"user_email":"jisu.han3201@gmail.com"})),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [
     url(r'^', views.ReactAppView.as_view()),
