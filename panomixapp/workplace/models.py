@@ -6,7 +6,7 @@ from ..users import models as user_models
 class Workplace(models.Model):
 
     name = models.CharField(max_length=255, blank=True, null=True, unique=True)
-    user = models.ManyToManyField(user_models.User, through="UserWorkPlace", related_name="user")
+    user = models.ManyToManyField(user_models.User, through="UserWorkPlace", related_name="workplaces")
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

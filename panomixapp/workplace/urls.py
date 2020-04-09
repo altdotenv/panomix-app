@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path("<str:workplace>/info", view=views.GetDashboardInfo.as_view()),
     path("<str:workplace>/check", view=views.CheckWorkplace.as_view()),
     path("connect/slack", view=views.ConnectSlack.as_view()),
     # path("create", view=views.CreateDataSource.as_view(), name="create_data_source"),

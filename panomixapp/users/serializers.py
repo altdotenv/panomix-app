@@ -54,4 +54,17 @@ class LoginUserSerializer(serializers.ModelSerializer):
         workplace_models.UserWorkPlace(user=user, workplace=workplace).save()
         user.save()
         return user
-        
+
+
+class UserInfoSerializer(serializers.ModelSerializer):
+
+    workplaces = workplace_serializers.WorkplaceSerializer(many=True)
+
+    class Meta:
+        model = models.User
+        fields = (
+            "id",
+            "name",
+            "email",
+            "workplaces"
+        )

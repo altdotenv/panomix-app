@@ -108,3 +108,31 @@
     }
 
 }
+
+@mixin successAlert {
+    width: 100%;
+    background-color: $main-green;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+@mixin failAlert {
+    width: 100%;
+    background-color: red;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;    
+}
+
+@mixin grayHrLine {
+    width: 100%;
+    border:0;
+    border-top: 1px solid #999999;
+    margin:0;
+    height:1px; 
+}

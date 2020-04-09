@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.parsers import JSONParser
 from django.http import HttpResponse
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -12,6 +13,8 @@ from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from . import serializers, models, tokens
+from panomixapp.workplace import models as workplace_models
+from panomixapp.workplace import serializers as workplace_serializers
 
 import logging
 import json
@@ -65,34 +68,48 @@ class GoogleSignup(APIView):
             content = {'message': 'wrong google token / this google token is already expired.'}
             return Response(content, status=status.HTTP_401_UNAUTHORIZED)
 
-        data = {
-            "name": data["name"],
-            "email": data["email"],
-            "workplace": {"name":workplace},
-            "password": models.User.objects.make_random_password(),
-            "is_active": True
-        }
-        serialized = serializers.UserSerializer(data=data, context={'request':request})
-
-        if serialized.is_valid():
-            user = serialized.save()
-            token = RefreshToken.for_user(user)
-            response = {}
-            response['email'] = user.email
-            response['access_token'] = str(token.access_token)
-            response['refresh_token'] = str(token)
-            response['workplace'] = workplace
-            return Response(response, status=status.HTTP_201_CREATED)
-        else:
-            logging.error(serialized.errors)
-            if serialized.errors.get("workplace") and serialized.errors.get("email"):
-                return Response({"result":"workplace email exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
-            elif serialized.errors.get("workplace"):
+        is_exist_user = models.User.objects.filter(email=data["email"])
+        if is_exist_user:
+            user = is_exist_user[0]
+            is_exist_workplace = workplace_models.Workplace.objects.filter(name=workplace)
+            if is_exist_workplace:
                 return Response({"result":"workplace exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
-            elif serialized.errors.get("email"):
-                return Response({"result":"email exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
             else:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
+                workplace_obj = workplace_models.Workplace.objects.create(name=workplace)
+                workplace_models.UserWorkPlace.objects.create(user=user, workplace=workplace_obj, is_admin=True)
+                token = RefreshToken.for_user(user)
+                response = {}
+                response['email'] = user.email
+                response['access_token'] = str(token.access_token)
+                response['refresh_token'] = str(token)
+                response['workplace'] = workplace
+                return Response(response, status=status.HTTP_201_CREATED)
+
+        else:
+            data = {
+                "name": data["name"],
+                "email": data["email"],
+                "workplace": {"name":workplace},
+                "password": models.User.objects.make_random_password(),
+                "is_active": True
+            }
+            serialized = serializers.UserSerializer(data=data, context={'request':request})
+
+            if serialized.is_valid():
+                user = serialized.save()
+                token = RefreshToken.for_user(user)
+                response = {}
+                response['email'] = user.email
+                response['access_token'] = str(token.access_token)
+                response['refresh_token'] = str(token)
+                response['workplace'] = workplace
+                return Response(response, status=status.HTTP_201_CREATED)
+            else:
+                logging.error(serialized.errors)
+                if serialized.errors.get("workplace"):
+                    return Response({"result":"workplace exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class GoogleLogin(APIView):
@@ -213,3 +230,12 @@ class ActivateUser(APIView):
             return redirect("/login/success")
         else:
             return HttpResponse('Activation link is invalid!')
+
+class UserInfo(APIView):
+
+    def get(self, request):
+
+        user = request.user
+        serialized = serializers.UserInfoSerializer(user)
+
+        return Response(data=serialized.data, status=status.HTTP_200_OK)

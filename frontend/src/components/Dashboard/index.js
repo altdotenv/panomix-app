@@ -2,9 +2,15 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Dashboard from "./presenter"
 import * as userActions from "store/modules/user";
+import * as dashboardActions from "store/modules/dashboard";
 
 
 class Container extends Component {
+
+    componentDidMount(){
+        const { match: { params }, getDashboardInfo } = this.props
+        getDashboardInfo(params.workplace)
+    }
 
     render(){
         return (
@@ -16,11 +22,12 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => {
-    const { user: { isLoggedIn } } = state;
+    const { user: { isLoggedIn, info } } = state;
     return {
       isLoggedIn,
+      info,
     }
-  }
+}
   
 
 const mapDispatchToProps = dispatch =>{
@@ -28,6 +35,9 @@ const mapDispatchToProps = dispatch =>{
         logout: () => {
             dispatch(userActions.logout())
         },
+        getDashboardInfo:(workplace) => {
+            dispatch(dashboardActions.getDashboardInfo(workplace))
+        }
         // slackConnect: () => {
         //     dispatch(dashboardActions.slackConnect())
         // }

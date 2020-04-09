@@ -1,0 +1,9 @@
+@import "../../layouts/variables";
+
+.successAlert {
+    @include successAlert;
+}
+
+.failAlert {
+    @include failAlert;
+}

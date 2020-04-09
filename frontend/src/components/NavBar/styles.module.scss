@@ -101,6 +101,18 @@
         position: initial;
         box-shadow: initial;
     }
+
+    .workplaceList {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 15px;
+        hr {
+            @include grayHrLine
+        }    
+    }
     
     .dropdownLink {
         color: black;
@@ -114,9 +126,13 @@
 .greenFilledTag {
     margin: 0px 5px;
     @include greenFilledTag();
+    
 }
 .greenRoundTag {
     margin: 0px 5px;
     @include greenRoundTag();
+    @media only screen and (max-width: 768px) {
+        margin-top: 15px;
+   }
 }
 

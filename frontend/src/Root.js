@@ -18,14 +18,3 @@ const Root = () => {
 };
 
 export default Root;
-
-{/* <BrowserRouter>
-    <Route
-        path="/"
-        render={props => { const subdomain = window.location.hostname.split('.');
-            if (subdomain && subdomain.length > 1)
-            return <PartnerLayout {...props} subdomain={subdomain[0]}/>;
-            return <AppLayout {...props}/>; }
-        }
-    />
-</BrowserRouter> */}

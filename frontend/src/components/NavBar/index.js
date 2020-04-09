@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux"
+import * as userActions from "store/modules/user";
 import styles from "./styles.module.scss";
 import MainLogo from "../../assets/images/panomix_logo.png";
 import MenuIcon from '@material-ui/icons/Menu';
@@ -12,13 +14,19 @@ class NavBar extends Component {
     };
 
     componentDidMount(){
+        const { isLoggedIn, getUserInfo } = this.props
         this.setState({
             isToggleOn:false,
             openDropdown: false
         })
+        
+        if (isLoggedIn){
+            getUserInfo()
+        }
     }
 
     render(){
+        const userWorkplaces = this.props.info ? this.props.info.workplaces : null
         return (
             <nav className={styles.nav}>
                 <div className={styles.container}>
@@ -36,6 +44,14 @@ class NavBar extends Component {
                             <button className={styles.greenFilledTag} onClick={() => this.toggleDropdown()}>Launch Panomix</button>
                             {this.state.openDropdown ? (
                                 <div className={styles.dropdown}>
+                                    {userWorkplaces ?
+                                    <div className={styles.workplaceList}>
+                                        {userWorkplaces.map((obj, index) => (
+                                            <NavLink to={"app/"+obj.name} key={index} className={styles.dropdownLink}>{obj.name}</NavLink>
+                                        ))}
+                                        <hr />
+                                    </div>
+                                    : null}
                                     <NavLink to="/login" className={styles.dropdownLink} onClick={() => this.toggleDropdown()} >Login to Another Workplace</NavLink>
                                     <NavLink to="/signup" className={styles.dropdownLink} onClick={() => this.toggleDropdown()}>Create a New Workplace</NavLink>
                                 </div>
@@ -54,6 +70,13 @@ class NavBar extends Component {
                         <button className={styles.greenFilledTag} onClick={() => this.toggleDropdown()}>Launch Panomix</button>
                         {this.state.openDropdown ? (
                             <div className={styles.dropdown}>
+                                {userWorkplaces ?
+                                <div className={styles.workplaceList}>
+                                    {userWorkplaces.map((obj, index) => (
+                                        <NavLink to={"app/"+obj.name} key={index}>{obj.name}</NavLink>
+                                    ))}
+                                </div>
+                                : null}
                                 <NavLink to="/login" className={styles.dropdownLink} onClick={() => this.toggleDropdown()} >Login to Another Workplace</NavLink>
                                 <NavLink to="/signup" className={styles.dropdownLink} onClick={() => this.toggleDropdown()}>Create a New Workplace</NavLink>
                             </div>
@@ -80,6 +103,23 @@ class NavBar extends Component {
 
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+    const { user: { isLoggedIn, info } } = state;
+    return {
+        isLoggedIn,
+        info
+    }
+}
+  
+const mapDispatchToProps = dispatch => {
+    return {
+        getUserInfo: () => {
+            dispatch(userActions.getUserInfo());
+        }
+    }
+}
+  
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
 
 

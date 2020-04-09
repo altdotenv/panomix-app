@@ -19,6 +19,7 @@ const SAVE_NOT_REGISTERED_EMAIL = "user/SAVE_NOT_REGISTERED_EMAIL"
 const DELETE_NOT_REGISTERED_EMAIL = "user/DELETE_NOT_REGISTERED_EMAIL"
 const SEND_MAIL_REQUEST = "user/SEND_MAIL_REQUEST"
 const SEND_MAIL_SUCCESS = "user/SEND_MAIL_SUCCESS"
+const GET_USER_INFO = "user/GET_USER_INFO"
 
 //Action Creators
 export const save_workplace = (workplace) => ({ type: SAVE_WORKPLACE, workplace })
@@ -39,6 +40,7 @@ export const save_not_registered_email = (email) => ({ type:SAVE_NOT_REGISTERED_
 export const delete_not_registered_email = () => ({ type:SAVE_NOT_REGISTERED_EMAIL})
 export const send_mail_request = () => ({ type:SEND_MAIL_REQUEST })
 export const send_mail_success = () => ({ type:SEND_MAIL_SUCCESS })
+export const get_user_info = (info) => ({ type:GET_USER_INFO, info })
 
 //Api Actions
 export function checkWorkplace(workplace){
@@ -144,18 +146,12 @@ export function userSignupWithGoogle(workplace, result){
       }
     })
     .then(json => {
-      if (json.result === "workplace email exists"){
+      if (json.result === "workplace exists"){
         dispatch(workplace_with_google_exist())
-        dispatch(google_email_exist())
-    
-      } else if (json.result === "workplace exists"){
-        dispatch(workplace_with_google_exist())
-      } else if (json.result === "email exists"){
-        dispatch(google_email_exist())
       } else {
         dispatch(save_token(json.access_token))
         dispatch(save_workplace(json.workplace))
-        history.push("/app")
+        history.push(`/app/${json.workplace}`)
       }
     })
     .catch(err => alert(err))
@@ -184,7 +180,7 @@ export function onLoginGoogle(result){
     .then(json => {
       if (json.access_token){
         dispatch(save_token(json.access_token))
-        history.push("/app")
+        history.push(`/app/${workplace}`)
         // dispatch(google_email_not_exist())
         // setTimeout(() => {
         //   dispatch(google_email_not_exist_false())
@@ -223,11 +219,36 @@ export function sendRequestMail(userEmail){
     .catch(error => console.log(error))
   }
 }
+
+export function getUserInfo(info){
+  return function(dispatch, getState){
+    const { user: { token } } = getState()
+    fetch("/api/users/info", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if(response.status === 200){
+        return response.json()
+      } else {
+        dispatch(logout())
+        history.push("/")
+        throw Error(response.statusText)
+      }
+    })
+    .then(json => {
+      dispatch(get_user_info(json))
+    })
+    .catch(error => alert(error))
+  }
+}
+
 //initial state
 const initialState = {
     isLoggedIn: localStorage.getItem('jwt') ? true : false,
     token: localStorage.getItem("jwt"),
-    workplace: localStorage.getItem("workplace"),
     has_workplace: false,
     email_exist: false,
     google_email_not_exist: false,
@@ -239,12 +260,11 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     switch(action.type) {
       case SAVE_WORKPLACE:
-        localStorage.setItem("workplace", action.workplace)
         return {...state, workplace: action.workplace, has_workplace: true}
       case LOGOUT:
         localStorage.removeItem('jwt')
         localStorage.removeItem('workplace')
-        return {...state, isLoggedIn:false}
+        return {isLoggedIn:false}
       case INITIALIZE_LOGIN:
         return {...state, workplace:"", has_workplace:false, is_workplace_exist:true}  
       case INITIALIZE_WORKPLACE:
@@ -278,6 +298,8 @@ export default function reducer(state = initialState, action) {
         return {...state, loading: true}
       case SEND_MAIL_SUCCESS:
         return {...state, loading: false}
+      case GET_USER_INFO:
+        return {...state, info: action.info}
       default:
         return state; 
     }

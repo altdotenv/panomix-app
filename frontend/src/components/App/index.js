@@ -18,10 +18,11 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => {
-  const { user: { isLoggedIn, workplace } } = state;
+  const { user: { isLoggedIn, workplace }, router: { location } } = state;
   return {
     isLoggedIn,
     workplace,
+    location
   }
 }
 

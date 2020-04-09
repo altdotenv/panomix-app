@@ -46,7 +46,7 @@ class Home extends Component {
                 </div>
                 <div className={styles.partition}>
                     <div className={styles.container}>
-                        <img src={Image1} alt="social image"/>
+                        <img src={Image1} alt="social"/>
                         <h3>Connect All Marketing Efforts</h3>
                         <ul>
                             <li>제한적인 리소스</li>
@@ -58,17 +58,17 @@ class Home extends Component {
                 <div className={styles.partition}>
                     <div className={styles.container}>
                         <div className={styles.threeRow}>
-                            <img src={Image2} alt="social image"/>
+                            <img src={Image2} alt="social"/>
                             <h4>Multi-Channel Marketing</h4>
                             <p>타게팅, 키워드, 광고 세트 등 켐페인에 필요한 모든 세팅을 파노믹스가 구글, 페이스북 등 멀티 채널을 통해 자동 운영 집행합니다.</p>
                         </div>
                         <div className={styles.threeRow}>
-                            <img src={Image3} alt="social image"/>
+                            <img src={Image3} alt="social"/>
                             <h4>Data Integration</h4>
                             <p>구글 시트, 구글 에널리틱스, 페이스북 광고 관리자 등에서의 마게팅 데이터를 통합 분석하여 운영합니다.</p>          
                         </div>
                         <div className={styles.threeRow}>
-                            <img src={Image4} alt="social image"/>
+                            <img src={Image4} alt="social"/>
                             <h4>Reports & Notifications</h4>
                             <p>비지니스에 맞는 광고 지표들을 Redash를 통해 대쉬보드를 제공, 슬랙을 통해 일간, 주간 리포트 및 다양한 알람들을 자동화합니다.</p>
                         </div>

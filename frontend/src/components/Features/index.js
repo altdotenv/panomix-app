@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Loading from "../Loading";
 import { Link } from "react-router-dom"
 import styles from "./styles.module.scss"
 import Image2 from 'assets/images/image-02.png'

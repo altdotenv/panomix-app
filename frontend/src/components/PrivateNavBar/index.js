@@ -9,19 +9,26 @@ import SettingIcon from "assets/images/icon-02.png"
 
 class PrivateNavBar extends Component {
 
+    componentDidMount(){
+        const { info, getUserInfo } = this.props;
+        if (!info){
+            getUserInfo()
+        }
+    }
+
     render(){
         return (
             <div className={styles.nav}>
                 <div className={styles.leftNav}>
                     <div className={styles.logo}>
-                        <NavLink to="/"><img src={MainLogo} alt="logo" /></NavLink>
+                        <NavLink to="/"><img src={MainLogo} alt="panomix logo" /></NavLink>
                     </div>
                 </div>
                 <div className={styles.rightNav}>
-                    <p>{this.props.name}Jisu Han</p>
+                    <p>{this.props.info ? this.props.info.name : null}</p>
                     <div className={styles.links}>
-                        <img onClick={() => this.props.logout()} src={SettingIcon} />
-                        <img onClick={() => this.props.logout()} src={LogoutIcon} />
+                        <img onClick={() => this.props.logout()} src={SettingIcon} alt="settings"/>
+                        <img onClick={() => this.props.logout()} src={LogoutIcon} alt="logout" />
                     </div>
                 </div>
             </div>
@@ -30,14 +37,25 @@ class PrivateNavBar extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    const { user: { info } } = state;
+    return {
+      info,
+    }
+}
+
+
 const mapDispatchToProps = dispatch =>{
     return {
         logout: () => {
             dispatch(userActions.logout())
-        }
+        },
+        getUserInfo: () => {
+            dispatch(userActions.getUserInfo())
+        },
     }
 }
 
-export default connect(null, mapDispatchToProps)(PrivateNavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateNavBar);
 
 
