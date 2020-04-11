@@ -13,7 +13,6 @@ class UserSerializer(serializers.ModelSerializer):
     name = serializers.CharField(required=True, write_only=True)
     email = serializers.EmailField(validators=[UniqueValidator(queryset=models.User.objects.all())])
     password = serializers.CharField(required=True, write_only=True)
-    is_active = serializers.BooleanField(required=True, write_only=True)
 
     class Meta:
         model = models.User
@@ -26,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
         user = models.User.objects.create(**validated_data)
 
         workplace = workplace_models.Workplace.objects.create(**workplace_data)
-        workplace_models.UserWorkPlace(user=user, workplace=workplace, is_admin=True).save()
+        workplace_models.UserWorkPlace(user=user, workplace=workplace, is_admin=True, is_accepted=True).save()
         workplace.save()
         
         user.save()
@@ -40,7 +39,6 @@ class LoginUserSerializer(serializers.ModelSerializer):
     name = serializers.CharField(required=True, write_only=True)
     email = serializers.EmailField(validators=[UniqueValidator(queryset=models.User.objects.all())])
     password = serializers.CharField(required=True, write_only=True)
-    is_active = serializers.BooleanField(required=True, write_only=True)
 
     class Meta:
         model = models.User
@@ -67,4 +65,14 @@ class UserInfoSerializer(serializers.ModelSerializer):
             "name",
             "email",
             "workplaces"
+        )
+
+class UserSmallInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.User
+        fields = (
+            "id",
+            "name",
+            "email"
         )

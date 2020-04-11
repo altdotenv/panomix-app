@@ -13,8 +13,8 @@
   <body>
     <div class="container">
         <div class="main">
-            <p><strong>{{ user_email }}</strong> sent request mail to access <strong>{{ workplace }}</strong></p>
-            <a class="acceptButton" href="http://{{ domain }}/api/users/activate/{{ uid }}/{{ token }}">Accept</a>
+            <p><strong>{{ user_email }}</strong> sent request mail to access <strong>{{ workplace_name }}</strong></p>
+            <a class="acceptButton" href="http://{{ domain }}/api/users/activate/{{ uid }}/{{ workplace }}/{{ token }}">Accept</a>
         </div>
     </div> 
   </body>

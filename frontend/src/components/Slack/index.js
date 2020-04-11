@@ -2,6 +2,8 @@ import qs from "query-string"
 import { connect } from "react-redux"
 import * as dashboardActions from "store/modules/dashboard"
 import { history } from "store/configure"
+import { Component } from "react"
+import Loading from "components/Loading"
 
 const SLACK_CLIENT_ID = "934436568806.922065774977"
 const AUTHORIZE_URI = "https://slack.com/oauth/v2/authorize"
@@ -13,22 +15,48 @@ const queryStr = qs.stringify({
 
 const connectUrl = AUTHORIZE_URI + "?" + queryStr
 
-const Slack = props => {
-    const { code, error } = qs.parse(props.location.search);
-
-    if(code){
-        props.slackConnect(code)
-    } else if (error){
-        history.push("/app")
-    } else {
-        window.location.assign(connectUrl);
+class Slack extends Component {
+    componentDidMount(){
+        const { code, error } = qs.parse(this.props.location.search);
+        const workplace = localStorage.getItem("workplace")
+        if(code){
+            this.props.slackConnect(code)
+        } else if (error){
+            history.push(`/app/${workplace}`)
+        } else {
+            window.location.assign(connectUrl);
+        }    
     }
-    return null
+
+    render(){
+        return null
+    }
 }
+
+// const Slack = props => {
+//     const { code, error } = qs.parse(props.location.search);
+//     const workplace = localStorage.getItem("workplace")
+//     if(code){
+//         props.slackConnect(code)
+//     } else if (error){
+//         history.push(`/app/${workplace}`)
+//     } else {
+//         window.location.assign(connectUrl);
+//     }
+//     return null
+// }
+
+// const mapStateToProps = state => {
+//     const { user: { workplace } } = state;
+//     return {
+//         ...state,
+//         workplace
+//     }
+// }
 
 const mapDispatchToProps = dispatch =>{
     return {
-        slackConnect: code => {
+        slackConnect: (code) => {
             dispatch(dashboardActions.slackConnect(code))
         }
     }

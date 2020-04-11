@@ -1,0 +1,29 @@
+@import "../../layouts/variables";
+
+.success{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 400px;
+        img {
+            width: 95px;
+            margin-bottom: 50px;
+        }
+        p {
+            margin-bottom: 50px;
+        }
+        strong {
+            color: $main-green;
+        }
+        .homeLink {
+            width: 100%;
+            @include greenRectangleButton;
+        }
+    }
+}

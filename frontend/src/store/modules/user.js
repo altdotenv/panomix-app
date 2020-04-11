@@ -1,5 +1,6 @@
 import { history } from "../configure"
 
+
 //Actions
 const SAVE_WORKPLACE = 'user/SAVE_WORKPLACE'
 const LOGOUT = 'user/LOGOUT'
@@ -12,7 +13,6 @@ const SAVE_TOKEN = "user/SAVE_TOKEN"
 // const EMAIL_NOT_EXIST = "user/EMAIL_NOT_EXIST"
 const WORKPLACE_WITH_GOOGLE_NOT_EXIST = "user/WORKPLACE_WITH_GOOGLE_NOT_EXIST"
 const WORKPLACE_WITH_GOOGLE_EXIST = "user/WORKPLACE_WITH_GOOGLE_EXIST"
-const GOOGLE_EMAIL_EXIST = "user/GOOGLE_EMAIL_EXIST"
 const GOOGLE_EMAIL_NOT_EXIST = "user/GOOGLE_EMAIL_NOT_EXIST"
 const GOOGLE_EMAIL_NOT_EXIST_FALSE = "user/GOOGLE_EMAIL_NOT_EXIST_FALSE"
 const SAVE_NOT_REGISTERED_EMAIL = "user/SAVE_NOT_REGISTERED_EMAIL"
@@ -20,6 +20,7 @@ const DELETE_NOT_REGISTERED_EMAIL = "user/DELETE_NOT_REGISTERED_EMAIL"
 const SEND_MAIL_REQUEST = "user/SEND_MAIL_REQUEST"
 const SEND_MAIL_SUCCESS = "user/SEND_MAIL_SUCCESS"
 const GET_USER_INFO = "user/GET_USER_INFO"
+const GET_WORKPLACE_USER_LIST = "user/GET_WORKPLACE_USER_LIST"
 
 //Action Creators
 export const save_workplace = (workplace) => ({ type: SAVE_WORKPLACE, workplace })
@@ -33,7 +34,6 @@ export const save_token = (token) => ({ type:SAVE_TOKEN, token })
 // export const email_not_exist = () => ({ type: EMAIL_NOT_EXIST })
 export const workplace_with_google_not_exist = () =>({ type: WORKPLACE_WITH_GOOGLE_NOT_EXIST })
 export const workplace_with_google_exist = () =>({ type: WORKPLACE_WITH_GOOGLE_EXIST })
-export const google_email_exist = () => ({ type: GOOGLE_EMAIL_EXIST })
 export const google_email_not_exist = () => ({ type: GOOGLE_EMAIL_NOT_EXIST })
 export const google_email_not_exist_false = () => ({ type: GOOGLE_EMAIL_NOT_EXIST_FALSE })
 export const save_not_registered_email = (email) => ({ type:SAVE_NOT_REGISTERED_EMAIL, email})
@@ -41,6 +41,7 @@ export const delete_not_registered_email = () => ({ type:SAVE_NOT_REGISTERED_EMA
 export const send_mail_request = () => ({ type:SEND_MAIL_REQUEST })
 export const send_mail_success = () => ({ type:SEND_MAIL_SUCCESS })
 export const get_user_info = (info) => ({ type:GET_USER_INFO, info })
+export const get_workplace_user_list = (user_list) => ({ type:GET_WORKPLACE_USER_LIST, user_list })
 
 //Api Actions
 export function checkWorkplace(workplace){
@@ -245,21 +246,49 @@ export function getUserInfo(info){
   }
 }
 
+export function getWorkplaceUserList(){
+  return function(dispatch, getState){
+    const { user: { token, workplace } } = getState()
+    fetch(`/api/users/list/${workplace}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if(response.status === 200){
+        return response.json()
+      } else {
+        dispatch(logout())
+        history.push("/")
+        throw Error(response.statusText)
+      }
+    })
+    .then(json => {
+      dispatch(get_workplace_user_list(json))
+    })
+    .catch(error => alert(error))
+  }
+}
+
 //initial state
 const initialState = {
     isLoggedIn: localStorage.getItem('jwt') ? true : false,
     token: localStorage.getItem("jwt"),
+    workplace: localStorage.getItem("workplace"),
     has_workplace: false,
     email_exist: false,
     google_email_not_exist: false,
     login_request_sended: false,
-    not_registered_email: null
+    not_registered_email: null,
+    userList: []
 };
   
 //reducer
 export default function reducer(state = initialState, action) {
     switch(action.type) {
       case SAVE_WORKPLACE:
+        localStorage.setItem("workplace", action.workplace)
         return {...state, workplace: action.workplace, has_workplace: true}
       case LOGOUT:
         localStorage.removeItem('jwt')
@@ -284,8 +313,6 @@ export default function reducer(state = initialState, action) {
         return {...state, is_workplace_with_google_exist:true}
       case WORKPLACE_WITH_GOOGLE_NOT_EXIST:
         return {...state, is_workplace_with_google_exist:false}
-      case GOOGLE_EMAIL_EXIST:
-        return {...state, google_email_exist: true}
       case GOOGLE_EMAIL_NOT_EXIST:
         return {...state, google_not_email_exist: true}
       case GOOGLE_EMAIL_NOT_EXIST_FALSE:
@@ -300,6 +327,8 @@ export default function reducer(state = initialState, action) {
         return {...state, loading: false}
       case GET_USER_INFO:
         return {...state, info: action.info}
+      case GET_WORKPLACE_USER_LIST:
+        return {...state, userList: action.user_list}
       default:
         return state; 
     }

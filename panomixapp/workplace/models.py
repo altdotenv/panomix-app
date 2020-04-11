@@ -20,6 +20,7 @@ class UserWorkPlace(models.Model):
     user = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
     workplace = models.ForeignKey(Workplace, on_delete=models.CASCADE)
     is_admin = models.BooleanField(default=False)
+    is_accepted = models.BooleanField(default=False)
 
     class Meta:
         db_table = "user_workplace"

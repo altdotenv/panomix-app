@@ -1,13 +1,11 @@
 import { history } from "../configure"
 import * as userActions from "./user"
 
-const SLACK_OAUTH = "dashboard/SLACK_OAUTH"
 const CONNECT_SUCCESS_ALERT = "dashboard/CONNECT_SUCCESS_ALERT"
 const CONNECT_FAIL_ALERT = "dashboard/CONNECT_FAIL_ALERT"
 const CONNECT_DEFAULT_ALERT = "dashboard/CONNECT_DEFAULT_ALERT"
 // const GET_DASHBOARD_INFO = "dashboard/GET_DASHBOARD_INFO"
 
-export const slack_oauth = () => ({ type: SLACK_OAUTH })
 export const connect_success_alert = () => ({ type: CONNECT_SUCCESS_ALERT})
 export const connect_fail_alert = () => ({ type: CONNECT_FAIL_ALERT})
 export const conenct_default_alert = () => ({ type: CONNECT_DEFAULT_ALERT })
@@ -42,7 +40,6 @@ export function getDashboardInfo(workplace){
 export function slackConnect(code){
     return function (dispatch, getState){
         const { user: { token, workplace } } = getState();
-        console.log(token)
         fetch(`/api/workplace/connect/slack`, {
             method: "POST",
             headers: {
@@ -59,19 +56,23 @@ export function slackConnect(code){
                 history.push(`/app/${workplace}`)
                 dispatch(connect_success_alert())
                 setTimeout(() => {
-                  dispatch(conenct_default_alert())
+                dispatch(conenct_default_alert())
                 }, 5000)
-                return response.json()
+                return null
             } else if (response.status === 401){
                 dispatch(userActions.logout())
                 history.push("/")
                 alert(response.statusText)
             } else {
+                dispatch(connect_fail_alert())
+                setTimeout(() => {
+                    dispatch(conenct_default_alert())
+                }, 5000)
                 throw Error(response.statusText)
             }
-          })
-        // .then(json => {
-        //     history.push("/app")
+        })
+        // .then(() => {
+        //     history.push(`/app/${workplace}`)
         // })
         .catch(error => console.log(error))
     }

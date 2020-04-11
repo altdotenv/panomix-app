@@ -27,7 +27,7 @@ class PrivateNavBar extends Component {
                 <div className={styles.rightNav}>
                     <p>{this.props.info ? this.props.info.name : null}</p>
                     <div className={styles.links}>
-                        <img onClick={() => this.props.logout()} src={SettingIcon} alt="settings"/>
+                        <NavLink to={"/app/" + this.props.workplace + "/settings"}><img src={SettingIcon} alt="settings"/></NavLink>
                         <img onClick={() => this.props.logout()} src={LogoutIcon} alt="logout" />
                     </div>
                 </div>
@@ -38,9 +38,10 @@ class PrivateNavBar extends Component {
 }
 
 const mapStateToProps = state => {
-    const { user: { info } } = state;
+    const { user: { info, workplace } } = state;
     return {
       info,
+      workplace
     }
 }
 

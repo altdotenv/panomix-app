@@ -9,5 +9,4 @@ class UserAdmin(admin.ModelAdmin):
         "id",
         "email",
         "is_superuser",
-        "is_active"
     )

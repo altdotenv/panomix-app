@@ -8,8 +8,9 @@ import * as dashboardActions from "store/modules/dashboard";
 class Container extends Component {
 
     componentDidMount(){
-        const { match: { params }, getDashboardInfo } = this.props
+        const { match: { params }, getDashboardInfo, save_workplace } = this.props
         getDashboardInfo(params.workplace)
+        save_workplace(params.workplace)
     }
 
     render(){
@@ -37,6 +38,9 @@ const mapDispatchToProps = dispatch =>{
         },
         getDashboardInfo:(workplace) => {
             dispatch(dashboardActions.getDashboardInfo(workplace))
+        },
+        save_workplace: workplace => {
+            dispatch(userActions.save_workplace(workplace))
         }
         // slackConnect: () => {
         //     dispatch(dashboardActions.slackConnect())

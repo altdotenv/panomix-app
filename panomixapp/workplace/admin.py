@@ -18,4 +18,5 @@ class UserWorkplaceAdmin(admin.ModelAdmin):
         "user",
         "workplace",
         "is_admin",
+        "is_accepted"
     )

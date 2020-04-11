@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8832ff62a99750cae0f77c1ffe2ddbeb",
+    "revision": "d26572da0bc4eb1937d881b646ddf78e",
     "url": "https://panomixapp.s3.amazonaws.com/index.html"
   },
   {
-    "revision": "953ed574c1e538347b2b",
+    "revision": "22de4bb294392205edb8",
     "url": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css"
   },
   {
-    "revision": "d847f22756a405680e96",
-    "url": "https://panomixapp.s3.amazonaws.com/static/css/main.e13f85d0.chunk.css"
+    "revision": "be9ccd44778d23eec8db",
+    "url": "https://panomixapp.s3.amazonaws.com/static/css/main.b490194c.chunk.css"
   },
   {
-    "revision": "953ed574c1e538347b2b",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.3a76ea33.chunk.js"
+    "revision": "22de4bb294392205edb8",
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.d6f5b411.chunk.js"
   },
   {
     "revision": "6c03bf7d357fb07ee478570c6fa965bf",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.3a76ea33.chunk.js.LICENSE.txt"
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.d6f5b411.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d847f22756a405680e96",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/main.c808ba51.chunk.js"
+    "revision": "be9ccd44778d23eec8db",
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/main.4dfebaae.chunk.js"
   },
   {
     "revision": "276ede75fc425afa4abe",
@@ -52,6 +52,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://panomixapp.s3.amazonaws.com/static/media/11.d09d0cd7.png"
   },
   {
+    "revision": "7b7fc60b2b7abcdde1d335637dfa5216",
+    "url": "https://panomixapp.s3.amazonaws.com/static/media/Icon_Integrations-01.7b7fc60b.png"
+  },
+  {
+    "revision": "9cd7c8a048bc639a94fefc17998c0fb3",
+    "url": "https://panomixapp.s3.amazonaws.com/static/media/Icon_Integrations-03.9cd7c8a0.png"
+  },
+  {
     "revision": "164991cfcba557d27f0dd63bc10f4ef8",
     "url": "https://panomixapp.s3.amazonaws.com/static/media/image-02.164991cf.png"
   },
@@ -66,18 +74,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "716f264aff26255e5133be44a16e1790",
     "url": "https://panomixapp.s3.amazonaws.com/static/media/image-05.716f264a.png"
-  },
-  {
-    "revision": "e0a0fa0f42dff57f00c079fc661c3562",
-    "url": "https://panomixapp.s3.amazonaws.com/static/media/logo_google ads.e0a0fa0f.png"
-  },
-  {
-    "revision": "fe8f840069e77bc40e2d8bb5eb4877ab",
-    "url": "https://panomixapp.s3.amazonaws.com/static/media/logo_google analytics.fe8f8400.png"
-  },
-  {
-    "revision": "463f0ca531c745d47b06ee46cddf3687",
-    "url": "https://panomixapp.s3.amazonaws.com/static/media/logo_slack.463f0ca5.png"
   },
   {
     "revision": "7454ad30f4d59b60ef1751c4a9d509c1",

@@ -21,10 +21,9 @@ class Container extends Component {
 
 
     componentDidUpdate(prevProps, prevState){
-        const { workplace_with_google_not_exist, google_email_not_exist } = this.props
+        const { workplace_with_google_not_exist } = this.props
         if (prevState.workplaceWithGoogle !== this.state.workplaceWithGoogle){
             workplace_with_google_not_exist()
-            google_email_not_exist()
         }
     }
 
@@ -70,12 +69,11 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => {
-    const { user: { token, is_workplace_with_google_exist, google_email_exist } } = state;
+    const { user: { token, is_workplace_with_google_exist } } = state;
     return {
         ...state,
         token,
-        is_workplace_with_google_exist,
-        google_email_exist
+        is_workplace_with_google_exist
     }
 }
 
@@ -90,9 +88,6 @@ const mapDispatchToProps = dispatch => {
         },
         userSignupWithGoogle: (workplace, result) => {
             dispatch(userActions.userSignupWithGoogle(workplace, result))
-        },
-        google_email_not_exist: () => {
-            dispatch(userActions.google_email_not_exist())
         }
     }
 }

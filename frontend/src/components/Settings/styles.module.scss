@@ -1,0 +1,21 @@
+@import "../../layouts/variables";
+
+.settings {
+    display: flex;
+    min-height: 100vh;
+    .leftDiv {
+        width: 150px;
+        background-color: $main-gray;
+    }
+    .rightDiv {
+        width: calc(100% - 150px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .container {
+            
+            @include containerSize;            
+        }
+    }
+
+}

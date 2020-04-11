@@ -13,9 +13,11 @@ import Contact from "../Contact"
 import PrivateNavBar from "../PrivateNavBar"
 import Slack from "../Slack"
 import SendEmailSuccess from "../SendEmailSuccess"
+import ActivateUserSuccess from "../ActivateUserSuccess"
+import Settings from "../Settings"
 
 const App = props => [
-    props.isLoggedIn && props.location.pathname !== "/" ? <PrivateNavBar key={0}/> : <NavBar  key={0}/>,
+    props.isLoggedIn && !["/", "/features", "/login", "/login/request/success", "/signup", "/terms", "/privacy", "/contact"].includes(props.location.pathname) ? <PrivateNavBar key={0}/> : <NavBar  key={0}/>,
     props.isLoggedIn ? <PrivateRoutes key={1} /> : <PublicRoutes key={1} />,
     props.isLoggedIn && props.location.pathname !== "/" ? null : <Footer key={2} />
 ]
@@ -25,9 +27,11 @@ const PrivateRoutes = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/app/:workplace" component={Dashboard} />
         <Route exact path="/app/connect/slack" component={Slack} />
+        <Route exact path="/app/:workplace/settings" component={Settings} />
         <Route exact path="/features" component={Features} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/login/request/success" component={SendEmailSuccess} />
+        <Route exact path="/login/activate/success" component={ActivateUserSuccess} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/terms" component={Terms} />
         <Route exact path="/privacy" component={Privacy} />
@@ -41,6 +45,7 @@ const PublicRoutes = () => (
         <Route exact path="/features" component={Features} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/login/request/success" component={SendEmailSuccess} />
+        <Route exact path="/login/activate/success" component={ActivateUserSuccess} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/terms" component={Terms} />
         <Route exact path="/privacy" component={Privacy} />

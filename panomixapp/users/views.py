@@ -91,7 +91,6 @@ class GoogleSignup(APIView):
                 "email": data["email"],
                 "workplace": {"name":workplace},
                 "password": models.User.objects.make_random_password(),
-                "is_active": True
             }
             serialized = serializers.UserSerializer(data=data, context={'request':request})
 
@@ -136,7 +135,8 @@ class GoogleLogin(APIView):
         # 이미 존재하는 유저
         if user:
             user = user[0]
-            if user.is_active:
+            user_workplace = workplace_models.UserWorkPlace.objects.get(user=user, workplace__name=workplace)
+            if user_workplace.is_accepted:
                 token = RefreshToken.for_user(user)
                 response = {
                     "email": user.email,
@@ -153,23 +153,30 @@ class GoogleLogin(APIView):
                 return Response(response, status=status.HTTP_202_ACCEPTED)
         # 처음 로그인하는 유저 workplace에 저장 되어있지 않다. host가 accept해야 is_active = True
         else:
-            data = {
-                "name": data["name"],
-                "email": data["email"],
-                "workplace": {"name":workplace},
-                "password": models.User.objects.make_random_password(),
-                "is_active": False
-            }
-            serialized = serializers.LoginUserSerializer(data=data, context={'request':request})
-            #유저 저장하지만 아직 Host에 의해 Accept되지 않음
-            if serialized.is_valid():
-                user = serialized.save()
-                response = {}
-                response['email'] = user.email
-                return Response(response, status=status.HTTP_201_CREATED)
+            user = models.User.objects.filter(email=data["email"])
+            if user:
+                user = user[0]
+                response = {
+                    "email": user.email
+                }
+                return Response(response, status=status.HTTP_202_ACCEPTED)
             else:
-                logging.error(serialized.errors)
-                return Response(status=status.HTTP_400_BAD_REQUEST)
+                data = {
+                    "name": data["name"],
+                    "email": data["email"],
+                    "workplace": {"name":workplace},
+                    "password": models.User.objects.make_random_password()
+                }
+                serialized = serializers.LoginUserSerializer(data=data, context={'request':request})
+                #유저 저장하지만 아직 Host에 의해 Accept되지 않음
+                if serialized.is_valid():
+                    user = serialized.save()
+                    response = {}
+                    response['email'] = user.email
+                    return Response(response, status=status.HTTP_201_CREATED)
+                else:
+                    logging.error(serialized.errors)
+                    return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class SendEmailToHost(APIView):
@@ -177,8 +184,6 @@ class SendEmailToHost(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-
-        print(request.data)
 
         if set(['workplace', 'email']) != set(request.data.keys()):
             return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -201,6 +206,8 @@ class SendEmailToHost(APIView):
             "user_email": request.data['email'],
             'domain': request.META["HTTP_HOST"],
             'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+            'workplace_name':request.data['workplace'],
+            'workplace':urlsafe_base64_encode(force_bytes(request.data['workplace'])),
             'token': tokens.account_activation_token.make_token(user)
         }
         html_message = render_to_string('email/request_to_host.html', context)
@@ -214,20 +221,24 @@ class ActivateUser(APIView):
 
     permission_classes = [AllowAny]
 
-    def get(self, request, uid=None, token=None):
+    def get(self, request, uid=None, workplace=None, token=None):
         
-        if not uid or not token:
+        if not uid or not workplace or not token:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
         try:
             uid = force_text(urlsafe_base64_decode(uid))
+            workplace = force_text(urlsafe_base64_decode(workplace))
             user = models.User.objects.get(pk=uid)
-        except (TypeError, ValueError, OverflowError, models.User.DoesNotExist):
+            user_workplace = workplace_models.UserWorkPlace.objects.get(user=user, workplace__name=workplace)
+        except (TypeError, ValueError, OverflowError, models.User.DoesNotExist, workplace_models.UserWorkPlace.DoesNotExist):
             user = None
-        if user is not None and tokens.account_activation_token.check_token(user, token):
-            user.is_active = True
-            user.save()
-            return redirect("/login/success")
+            user_workplace = None
+
+        if user is not None and user_workplace is not None and tokens.account_activation_token.check_token(user, token):
+            user_workplace.is_accepted = True
+            user_workplace.save()
+            return redirect("/login/activate/success")
         else:
             return HttpResponse('Activation link is invalid!')
 
@@ -239,3 +250,25 @@ class UserInfo(APIView):
         serialized = serializers.UserInfoSerializer(user)
 
         return Response(data=serialized.data, status=status.HTTP_200_OK)
+
+
+class WorkplaceUserList(APIView):
+
+    def get(self, request, workplace=None):
+        
+        if not workplace:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        found_workplace = workplace_models.Workplace.objects.filter(name=workplace)
+        if not found_workplace:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        is_user_in_workplace = workplace_models.UserWorkPlace.objects.filter(user=request.user, workplace=found_workplace[0])
+        if not is_user_in_workplace:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        all_user_in_workplace = models.User.objects.filter(workplaces=found_workplace[0])
+        serialized = serializers.UserSmallInfoSerializer(all_user_in_workplace, many=True)
+
+        return Response(data=serialized.data, status=status.HTTP_200_OK)
+
