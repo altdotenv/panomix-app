@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d26572da0bc4eb1937d881b646ddf78e",
+    "revision": "699d3665ce305bdfdd3c0106d3306cb7",
     "url": "https://panomixapp.s3.amazonaws.com/index.html"
   },
   {
-    "revision": "22de4bb294392205edb8",
+    "revision": "ebbc4af403e6f9061769",
     "url": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css"
   },
   {
-    "revision": "be9ccd44778d23eec8db",
-    "url": "https://panomixapp.s3.amazonaws.com/static/css/main.b490194c.chunk.css"
+    "revision": "7d9659e397c5df7c51ba",
+    "url": "https://panomixapp.s3.amazonaws.com/static/css/main.25dc5d11.chunk.css"
   },
   {
-    "revision": "22de4bb294392205edb8",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.d6f5b411.chunk.js"
+    "revision": "ebbc4af403e6f9061769",
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js"
   },
   {
     "revision": "6c03bf7d357fb07ee478570c6fa965bf",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.d6f5b411.chunk.js.LICENSE.txt"
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "be9ccd44778d23eec8db",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/main.4dfebaae.chunk.js"
+    "revision": "7d9659e397c5df7c51ba",
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/main.8fd1cef6.chunk.js"
   },
   {
     "revision": "276ede75fc425afa4abe",

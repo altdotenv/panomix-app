@@ -20,7 +20,7 @@ const Dashboard = props => (
         <div className={styles.rightDiv}>
             <PageTopAlert />
             <div className={styles.container}>
-                <div className={styles.gridCell}>
+                {/* <div className={styles.gridCell}>
                     <div className={styles.imgDiv}>
                         <img src={FacebookAdsImage} alt="facebook ads" />
                     </div>
@@ -55,7 +55,7 @@ const Dashboard = props => (
                         <button className={styles.greenBorderButton}>Connect</button>
                         <button className={styles.grayBorderButton}>Guide</button>
                     </div>
-                </div>
+                </div> */}
                 <div className={styles.gridCell}>
                     <div className={styles.imgDiv}>
                         <img src={SlackImage} alt="slack" />
@@ -67,7 +67,6 @@ const Dashboard = props => (
                 </div>
             </div>
         </div>
-        {/* <button onClick={() => props.logout()}>Logout</button> */}
     </div>
 )
 

@@ -13,8 +13,27 @@
         flex-direction: column;
         align-items: center;
         .container {
-            
-            @include containerSize;            
+            margin-top: 50px;
+            @include containerSize;
+            .userRow {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 28px;
+                border: 1px solid $light-gray;   
+                .userCol {
+                    width: 30%;
+                    &:last-child {
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                    .redFilledButton {
+                        @include redRectangleButton;
+                    }       
+                }
+            }
         }
     }
 

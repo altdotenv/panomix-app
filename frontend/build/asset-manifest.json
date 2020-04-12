@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "https://panomixapp.s3.amazonaws.com/static/css/main.b490194c.chunk.css",
-    "main.js": "https://panomixapp.s3.amazonaws.com/static/js/main.4dfebaae.chunk.js",
-    "main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/main.4dfebaae.chunk.js.map",
+    "main.css": "https://panomixapp.s3.amazonaws.com/static/css/main.25dc5d11.chunk.css",
+    "main.js": "https://panomixapp.s3.amazonaws.com/static/js/main.8fd1cef6.chunk.js",
+    "main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/main.8fd1cef6.chunk.js.map",
     "runtime-main.js": "https://panomixapp.s3.amazonaws.com/static/js/runtime-main.9c61a787.js",
     "runtime-main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/runtime-main.9c61a787.js.map",
     "static/css/2.bf33bae2.chunk.css": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css",
-    "static/js/2.d6f5b411.chunk.js": "https://panomixapp.s3.amazonaws.com/static/js/2.d6f5b411.chunk.js",
-    "static/js/2.d6f5b411.chunk.js.map": "https://panomixapp.s3.amazonaws.com/static/js/2.d6f5b411.chunk.js.map",
+    "static/js/2.245bcee4.chunk.js": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js",
+    "static/js/2.245bcee4.chunk.js.map": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js.map",
     "index.html": "https://panomixapp.s3.amazonaws.com/index.html",
-    "precache-manifest.77abae0d1150e8253902d1d7553bca0c.js": "https://panomixapp.s3.amazonaws.com/precache-manifest.77abae0d1150e8253902d1d7553bca0c.js",
+    "precache-manifest.96be499184a44a9f912ba89d96ffce00.js": "https://panomixapp.s3.amazonaws.com/precache-manifest.96be499184a44a9f912ba89d96ffce00.js",
     "service-worker.js": "https://panomixapp.s3.amazonaws.com/service-worker.js",
     "static/css/2.bf33bae2.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css.map",
-    "static/css/main.b490194c.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/main.b490194c.chunk.css.map",
-    "static/js/2.d6f5b411.chunk.js.LICENSE.txt": "https://panomixapp.s3.amazonaws.com/static/js/2.d6f5b411.chunk.js.LICENSE.txt",
+    "static/css/main.25dc5d11.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/main.25dc5d11.chunk.css.map",
+    "static/js/2.245bcee4.chunk.js.LICENSE.txt": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js.LICENSE.txt",
     "static/media/01.png": "https://panomixapp.s3.amazonaws.com/static/media/01.f8fdd13b.png",
     "static/media/02.png": "https://panomixapp.s3.amazonaws.com/static/media/02.5469143a.png",
     "static/media/03.png": "https://panomixapp.s3.amazonaws.com/static/media/03.8aa38768.png",
@@ -31,8 +31,8 @@
   "entrypoints": [
     "static/js/runtime-main.9c61a787.js",
     "static/css/2.bf33bae2.chunk.css",
-    "static/js/2.d6f5b411.chunk.js",
-    "static/css/main.b490194c.chunk.css",
-    "static/js/main.4dfebaae.chunk.js"
+    "static/js/2.245bcee4.chunk.js",
+    "static/css/main.25dc5d11.chunk.css",
+    "static/js/main.8fd1cef6.chunk.js"
   ]
 }
