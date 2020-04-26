@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "https://panomixapp.s3.amazonaws.com/static/css/main.25dc5d11.chunk.css",
-    "main.js": "https://panomixapp.s3.amazonaws.com/static/js/main.8fd1cef6.chunk.js",
-    "main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/main.8fd1cef6.chunk.js.map",
+    "main.css": "https://panomixapp.s3.amazonaws.com/static/css/main.2f25df62.chunk.css",
+    "main.js": "https://panomixapp.s3.amazonaws.com/static/js/main.edbee553.chunk.js",
+    "main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/main.edbee553.chunk.js.map",
     "runtime-main.js": "https://panomixapp.s3.amazonaws.com/static/js/runtime-main.9c61a787.js",
     "runtime-main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/runtime-main.9c61a787.js.map",
     "static/css/2.bf33bae2.chunk.css": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css",
-    "static/js/2.245bcee4.chunk.js": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js",
-    "static/js/2.245bcee4.chunk.js.map": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js.map",
+    "static/js/2.749f2409.chunk.js": "https://panomixapp.s3.amazonaws.com/static/js/2.749f2409.chunk.js",
+    "static/js/2.749f2409.chunk.js.map": "https://panomixapp.s3.amazonaws.com/static/js/2.749f2409.chunk.js.map",
     "index.html": "https://panomixapp.s3.amazonaws.com/index.html",
-    "precache-manifest.96be499184a44a9f912ba89d96ffce00.js": "https://panomixapp.s3.amazonaws.com/precache-manifest.96be499184a44a9f912ba89d96ffce00.js",
+    "precache-manifest.1eb64ea111261124f344b501dd6cad6d.js": "https://panomixapp.s3.amazonaws.com/precache-manifest.1eb64ea111261124f344b501dd6cad6d.js",
     "service-worker.js": "https://panomixapp.s3.amazonaws.com/service-worker.js",
     "static/css/2.bf33bae2.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css.map",
-    "static/css/main.25dc5d11.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/main.25dc5d11.chunk.css.map",
-    "static/js/2.245bcee4.chunk.js.LICENSE.txt": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js.LICENSE.txt",
-    "static/media/01.png": "https://panomixapp.s3.amazonaws.com/static/media/01.f8fdd13b.png",
-    "static/media/02.png": "https://panomixapp.s3.amazonaws.com/static/media/02.5469143a.png",
+    "static/css/main.2f25df62.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/main.2f25df62.chunk.css.map",
+    "static/js/2.749f2409.chunk.js.LICENSE.txt": "https://panomixapp.s3.amazonaws.com/static/js/2.749f2409.chunk.js.LICENSE.txt",
+    "static/media/01.png": "https://panomixapp.s3.amazonaws.com/static/media/01.c56181af.png",
+    "static/media/02.png": "https://panomixapp.s3.amazonaws.com/static/media/02.7a09b2a9.png",
     "static/media/03.png": "https://panomixapp.s3.amazonaws.com/static/media/03.8aa38768.png",
     "static/media/09.png": "https://panomixapp.s3.amazonaws.com/static/media/09.ce661adc.png",
     "static/media/10.png": "https://panomixapp.s3.amazonaws.com/static/media/10.b531b3e1.png",
@@ -26,13 +26,15 @@
     "static/media/image-03.png": "https://panomixapp.s3.amazonaws.com/static/media/image-03.3f467f73.png",
     "static/media/image-04.png": "https://panomixapp.s3.amazonaws.com/static/media/image-04.ce64ec97.png",
     "static/media/image-05.png": "https://panomixapp.s3.amazonaws.com/static/media/image-05.716f264a.png",
+    "static/media/styles.module.scss": "https://panomixapp.s3.amazonaws.com/static/media/main_bg-01.a3b916e3.png",
+    "static/media/panomix_logoB.png": "https://panomixapp.s3.amazonaws.com/static/media/panomix_logoB.4606c5c7.png",
     "static/media/panomix_logo_mix-06.png": "https://panomixapp.s3.amazonaws.com/static/media/panomix_logo_mix-06.7454ad30.png"
   },
   "entrypoints": [
     "static/js/runtime-main.9c61a787.js",
     "static/css/2.bf33bae2.chunk.css",
-    "static/js/2.245bcee4.chunk.js",
-    "static/css/main.25dc5d11.chunk.css",
-    "static/js/main.8fd1cef6.chunk.js"
+    "static/js/2.749f2409.chunk.js",
+    "static/css/main.2f25df62.chunk.css",
+    "static/js/main.edbee553.chunk.js"
   ]
 }

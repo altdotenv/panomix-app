@@ -1,21 +1,40 @@
 {% load static %}
+{% load inlinecss %}
+{% inlinecss "css/request_to_host.css" %}
 <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}panomixapp{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>HTML Email Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
-
   </head>
 
   <body>
-    <div class="container">
+    <!-- OUTERMOST CONTAINER TABLE -->
+    <table border="1" cellpadding="0" cellspacing="0" width="100%" id="bodyTable">
+      <tr>
+        <td>
+
+          <!-- 600px - 800px CONTENTS CONTAINER TABLE -->
+          <table align="center" border="1" cellpadding="0" cellspacing="0" width="600">
+            <tr>
+              <td align="center">
+                <img src="https://panomixapp.s3.ap-northeast-2.amazonaws.com/static/images/panomix_logo.png" alt="panomix logo" width="100%">
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+    <!-- <div class="container">
         <div class="main">
             <p><strong>{{ user_email }}</strong> sent request mail to access <strong>{{ workplace_name }}</strong></p>
             <a class="acceptButton" href="http://{{ domain }}/api/users/activate/{{ uid }}/{{ workplace }}/{{ token }}">Accept</a>
         </div>
-    </div> 
-  </body>
+    </div>  -->
+</body>
 </html>
+{% endinlinecss %}

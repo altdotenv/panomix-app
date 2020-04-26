@@ -3,6 +3,7 @@ import Loading from "../Loading"
 import { NavLink } from "react-router-dom"
 import styles from "./styles.module.scss"
 import Carousel from "react-material-ui-carousel"
+import Logo from "assets/images/panomix_symbolB.png"
 import Image1 from 'assets/images/01.png'
 import Image2 from 'assets/images/02.png'
 import Image3 from 'assets/images/03.png'
@@ -25,9 +26,9 @@ class Home extends Component {
                 <div className={styles.partition}>
                     <div className={styles.container}>
                         <div className={styles.colPartition}>
-                            <h1 className={styles.title}>Marketing Growth Mix</h1>
-                            <p className={styles.sourceComment}>source ENV/bin/activate</p>
-                            <NavLink to="/contact" className={styles.greenRoundTag} >Contact Us</NavLink>
+                            <h1 className={styles.title}>Digital & Creative Transformation<br/>Strategic Marketing<br/>Future.</h1>
+                            {/* <p className={styles.sourceComment}>source ENV/bin/activate</p>
+                            <NavLink to="/contact" className={styles.greenRoundTag} >Contact Us</NavLink> */}
                         </div>
                         <div className={styles.colPartition}>
                             <Carousel className={styles.carouselWrapper}>
@@ -38,12 +39,14 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
+                <hr className={styles.gradientHrLine}/>
                 <div className={styles.partition}>
                     <div className={styles.container}>
-                        <h2>Automate Marketing at will</h2>
-                        <h5>반복적이거나 시스템이 더 잘할 수 있는 부분은 파노믹스에 맡기고 제품과 전략에 집중하세요.</h5>
+                        <img className={styles.logoImage} src={Logo} alt="panomix blue logo"/>
+                        <h2>Digital Marketing Agency like no other</h2>
                     </div>
                 </div>
+                <hr className={styles.gradientHrLine}/>
                 <div className={styles.partition}>
                     <div className={styles.container}>
                         <img src={Image1} alt="social"/>

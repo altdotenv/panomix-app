@@ -19,8 +19,8 @@ const globalStyles = createGlobalStyle`
     body{
         font-family:Arial, 'Nanum Gothic', sans-serif;
         font-size: 14px;
-        background: #FFFFFF;
-        color: black;
+        background: black;
+        color: white;
         line-height: 1.2;
     }
 `;

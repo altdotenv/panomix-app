@@ -1,6 +1,6 @@
 # Django
 # ------------------------------------------------------------------------------
-django==2.2.11  # pyup: < 3.0  # https://www.djangoproject.com/
+django==2.2.0  # pyup: < 3.0  # https://www.djangoproject.com/
 django-environ==0.4.5  # https://github.com/joke2k/django-environ
 django-inlinecss==0.3.0
 django-cors-headers==3.2.1

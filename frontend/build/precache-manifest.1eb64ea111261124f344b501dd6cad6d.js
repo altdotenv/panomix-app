@@ -1,39 +1,39 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "699d3665ce305bdfdd3c0106d3306cb7",
+    "revision": "6e544883c786eb8aded191ed50a23cd0",
     "url": "https://panomixapp.s3.amazonaws.com/index.html"
   },
   {
-    "revision": "ebbc4af403e6f9061769",
+    "revision": "ec9e49f20bb7dc99ddae",
     "url": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css"
   },
   {
-    "revision": "7d9659e397c5df7c51ba",
-    "url": "https://panomixapp.s3.amazonaws.com/static/css/main.25dc5d11.chunk.css"
+    "revision": "e85a39f7e6d365495e7d",
+    "url": "https://panomixapp.s3.amazonaws.com/static/css/main.2f25df62.chunk.css"
   },
   {
-    "revision": "ebbc4af403e6f9061769",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js"
+    "revision": "ec9e49f20bb7dc99ddae",
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.749f2409.chunk.js"
   },
   {
     "revision": "6c03bf7d357fb07ee478570c6fa965bf",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.245bcee4.chunk.js.LICENSE.txt"
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/2.749f2409.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7d9659e397c5df7c51ba",
-    "url": "https://panomixapp.s3.amazonaws.com/static/js/main.8fd1cef6.chunk.js"
+    "revision": "e85a39f7e6d365495e7d",
+    "url": "https://panomixapp.s3.amazonaws.com/static/js/main.edbee553.chunk.js"
   },
   {
     "revision": "276ede75fc425afa4abe",
     "url": "https://panomixapp.s3.amazonaws.com/static/js/runtime-main.9c61a787.js"
   },
   {
-    "revision": "f8fdd13bdc87aae468aa8a1c1650625c",
-    "url": "https://panomixapp.s3.amazonaws.com/static/media/01.f8fdd13b.png"
+    "revision": "c56181aff9ba26bc1973f74c0b7df128",
+    "url": "https://panomixapp.s3.amazonaws.com/static/media/01.c56181af.png"
   },
   {
-    "revision": "5469143a2bbfdb84aeb7d528b8d165c4",
-    "url": "https://panomixapp.s3.amazonaws.com/static/media/02.5469143a.png"
+    "revision": "7a09b2a9c26b68dbd1dd382782d6d126",
+    "url": "https://panomixapp.s3.amazonaws.com/static/media/02.7a09b2a9.png"
   },
   {
     "revision": "8aa387681f139f8888ea15433323ddbf",
@@ -74,6 +74,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "716f264aff26255e5133be44a16e1790",
     "url": "https://panomixapp.s3.amazonaws.com/static/media/image-05.716f264a.png"
+  },
+  {
+    "revision": "a3b916e3e2d6a5064096e71b22bbc383",
+    "url": "https://panomixapp.s3.amazonaws.com/static/media/main_bg-01.a3b916e3.png"
+  },
+  {
+    "revision": "4606c5c7be13e9c0ef6242b97ac5d242",
+    "url": "https://panomixapp.s3.amazonaws.com/static/media/panomix_logoB.4606c5c7.png"
   },
   {
     "revision": "7454ad30f4d59b60ef1751c4a9d509c1",

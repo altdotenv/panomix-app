@@ -11,15 +11,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    &:nth-child(2){
-        background-color: $light-gray;
+    &:first-child {
+        height: calc(100vh - 4px);
+        background-image: url("../../assets/images/main_bg-01.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.85;
         .container {
-            display: flex;
-            flex-direction: column;
-            padding: 60px 0px;
+            align-items: flex-start;
         }
     }
     &:nth-child(3){
+        padding: 50px 0px;
+    }
+    &:nth-child(5){
         .container {
             flex-direction: column;
         }
@@ -39,15 +45,14 @@
     }
 
     h2 {
-        font-size: 35px;
+        font-size: 30px;
         font-weight: bold;
-        margin-bottom: 15px;
     }
     h3 {
         font-size: 25px;
         font-weight: bold;
         margin: 30px 0;
-        color: $main-green;
+        color: white;
         @media only screen and (max-width: 768px) {
             font-size: 22px;
           }                
@@ -55,7 +60,11 @@
     img {
         width: 300px;
         margin-right: 30px;
-    }    
+    }
+    .logoImage {
+        width: 50px;
+    }
+    
     ul {
         display: flex;
         flex-direction: column;
@@ -76,23 +85,24 @@
     flex-direction: column;
     align-items: center;
     &:first-child{
-        margin-bottom: 50px;
+        display: flex;
+        align-items: center;
     }
     @media (min-width: 768px){
         align-items: flex-start;
     }
     .title {
         margin: 15px 0px;
-        color: $main-green;
-        font-size: 35px;
-        font-weight: 800;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
     }
-    .sourceComment {
-        font-size: 15px;
-        font-family: Monaco;
-        color: $main-gray;
-        margin-bottom: 50px;    
-    }
+    // .sourceComment {
+    //     font-size: 15px;
+    //     font-family: Monaco;
+    //     color: $main-gray;
+    //     margin-bottom: 50px;    
+    // }
     .greenRoundTag {
         font-size: 18px;
         text-decoration: none;
@@ -106,10 +116,13 @@
         width: 100%;
         
         .carousel {
-            height: 300px;
-            width: 100%;
+            height: 390px;
+            width: 600px;
             box-shadow: 0 0 3px grey;
         }
+        @media only screen and (max-width: 768px) {
+            display: none;
+          }      
     }
 }
 .threeRow {
@@ -121,7 +134,7 @@
       font-size: 25px;
       font-weight: bold;
       margin: 15px 0;
-      color: $main-gray;
+      color: white;
     }
     img {
       width: 150px;
@@ -134,4 +147,8 @@
         font-size: 14px;
       }  
     }  
+}
+
+.gradientHrLine {
+    @include gradientHrLine;
 }

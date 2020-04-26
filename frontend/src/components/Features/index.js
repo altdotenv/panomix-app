@@ -19,6 +19,7 @@ class Features extends Component {
                         <Link to="/contact" className={styles.subLink}>Contact us</Link>
                     </div>  
                 </div>
+                <hr className={styles.gradientHrLine} />
                 <div className={styles.partition}>
                     <div className={styles.container}>
                         <h4>Digital Marketing</h4>
@@ -48,12 +49,14 @@ class Features extends Component {
                         </div>
                     </div>  
                 </div>
+                <hr className={styles.gradientHrLine} />
                 <div className={styles.partition}>
                     <div className={styles.container}>
                         <h2>Automate Marketing at will</h2>
                         <h5>반복적이거나 시스템이 더 잘할 수 있는 부분은 파노믹스에 맡기고 제품과 전략에 집중하세요.</h5>
                     </div>
                 </div>
+                <hr className={styles.gradientHrLine} />
                 <div className={styles.partition}>
                     <div className={styles.container}>
                         <h4>Data Integration & Connected Apps</h4>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux"
 import * as userActions from "store/modules/user";
 import styles from "./styles.module.scss";
-import MainLogo from "../../assets/images/panomix_logo.png";
+import MainLogo from "../../assets/images/panomix_logoB.png";
 import MenuIcon from '@material-ui/icons/Menu';
 
 class NavBar extends Component {
@@ -41,7 +41,7 @@ class NavBar extends Component {
                     </div>
                     <div className={styles.rightNav}>
                         <div className={styles.links}>
-                            <button className={styles.greenFilledTag} onClick={() => this.toggleDropdown()}>Launch Panomix</button>
+                            <button className={styles.blueFilledTag} onClick={() => this.toggleDropdown()}>Launch Panomix</button>
                             {this.state.openDropdown ? (
                                 <div className={styles.dropdown}>
                                     {userWorkplaces ?
@@ -56,10 +56,10 @@ class NavBar extends Component {
                                     <NavLink to="/signup" className={styles.dropdownLink} onClick={() => this.toggleDropdown()}>Create a New Workplace</NavLink>
                                 </div>
                             ) : null}
-                            <NavLink to="/contact" className={styles.greenRoundTag} >Contact Us</NavLink>
+                            <NavLink to="/contact" className={styles.greenFilledTag} >Contact Us</NavLink>
                         </div>
                         <div className={styles.toggleNav}>
-                            <MenuIcon onClick={() => this.handleClick()} style={{ cursor: "pointer", color: "#00c18c"}}></MenuIcon>
+                            <MenuIcon onClick={() => this.handleClick()} style={{ cursor: "pointer", color: "white"}}></MenuIcon>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ class NavBar extends Component {
                     <div className={styles.toggledLinks}>
                         <NavLink to="/features" className={styles.tag} >Features</NavLink>
                         <NavLink to="/pricing" className={styles.tag} onClick={ (event) => event.preventDefault() }>Pricing</NavLink>
-                        <button className={styles.greenFilledTag} onClick={() => this.toggleDropdown()}>Launch Panomix</button>
+                        <button className={styles.blueFilledTag} onClick={() => this.toggleDropdown()}>Launch Panomix</button>
                         {this.state.openDropdown ? (
                             <div className={styles.dropdown}>
                                 {userWorkplaces ?
@@ -81,7 +81,7 @@ class NavBar extends Component {
                                 <NavLink to="/signup" className={styles.dropdownLink} onClick={() => this.toggleDropdown()}>Create a New Workplace</NavLink>
                             </div>
                         ) : null}
-                        <NavLink to="/contact" className={styles.greenRoundTag} >Contact Us</NavLink>
+                        <NavLink to="/contact" className={styles.greenFilledTag} >Contact Us</NavLink>
                     </div>
                 : null}
             </nav>

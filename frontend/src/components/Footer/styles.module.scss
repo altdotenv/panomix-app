@@ -6,8 +6,7 @@
     align-items: center;
     justify-content: center;
     padding: 30px 3rem;
-    background: $light-gray;
-    color: $main-gray;
+    color: $light-gray;
     hr {
         @include grayHrLine
     }
@@ -22,7 +21,7 @@
     .subLink {
         padding: 1.5rem 30px 0 0;
         font-size: 11px;
-        color: #999999;
+        color: $light-gray;
     }
     &:first-child {
         height: 100px;
@@ -30,7 +29,7 @@
     p {
         padding: 1.5rem 30px 0 0;
         font-size: 11px;
-        color: #999999;
+        color: $light-gray;
     }
     
 }
@@ -52,7 +51,7 @@
         margin-bottom: 15px;
     }
     p {
-        color: $main-gray;
+        color: $light-gray;
         font-size: 13px;
         padding: 0;
     }
