@@ -17,9 +17,11 @@ import ActivateUserSuccess from "../ActivateUserSuccess"
 import Settings from "../Settings"
 
 const App = props => [
-    props.isLoggedIn && !["/", "/features", "/login", "/login/request/success", "/signup", "/terms", "/privacy", "/contact"].includes(props.location.pathname) ? <PrivateNavBar key={0}/> : <NavBar  key={0}/>,
+    props.isLoggedIn && !["/", "/features", "/login", "/login/request/success",
+        "/signup", "/terms", "/privacy", "/contact"].includes(props.location.pathname) ? <PrivateNavBar key={0}/> : <NavBar  key={0}/>,
     props.isLoggedIn ? <PrivateRoutes key={1} /> : <PublicRoutes key={1} />,
-    props.isLoggedIn && props.location.pathname !== "/" ? null : <Footer key={2} />
+    props.isLoggedIn && !["/", "/features", "/login", "/login/request/success",
+        "/signup", "/terms", "/privacy", "/contact"].includes(props.location.pathname) ? null : <Footer key={2} />
 ]
 
 const PrivateRoutes = () => (

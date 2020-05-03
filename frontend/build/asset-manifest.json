@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "https://panomixapp.s3.amazonaws.com/static/css/main.2f25df62.chunk.css",
-    "main.js": "https://panomixapp.s3.amazonaws.com/static/js/main.edbee553.chunk.js",
-    "main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/main.edbee553.chunk.js.map",
+    "main.css": "https://panomixapp.s3.amazonaws.com/static/css/main.5506ad65.chunk.css",
+    "main.js": "https://panomixapp.s3.amazonaws.com/static/js/main.5e3ed75f.chunk.js",
+    "main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/main.5e3ed75f.chunk.js.map",
     "runtime-main.js": "https://panomixapp.s3.amazonaws.com/static/js/runtime-main.9c61a787.js",
     "runtime-main.js.map": "https://panomixapp.s3.amazonaws.com/static/js/runtime-main.9c61a787.js.map",
     "static/css/2.bf33bae2.chunk.css": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css",
     "static/js/2.749f2409.chunk.js": "https://panomixapp.s3.amazonaws.com/static/js/2.749f2409.chunk.js",
     "static/js/2.749f2409.chunk.js.map": "https://panomixapp.s3.amazonaws.com/static/js/2.749f2409.chunk.js.map",
     "index.html": "https://panomixapp.s3.amazonaws.com/index.html",
-    "precache-manifest.1eb64ea111261124f344b501dd6cad6d.js": "https://panomixapp.s3.amazonaws.com/precache-manifest.1eb64ea111261124f344b501dd6cad6d.js",
+    "precache-manifest.09ef2934fb7c17242232ab0e62fcb7d2.js": "https://panomixapp.s3.amazonaws.com/precache-manifest.09ef2934fb7c17242232ab0e62fcb7d2.js",
     "service-worker.js": "https://panomixapp.s3.amazonaws.com/service-worker.js",
     "static/css/2.bf33bae2.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/2.bf33bae2.chunk.css.map",
-    "static/css/main.2f25df62.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/main.2f25df62.chunk.css.map",
+    "static/css/main.5506ad65.chunk.css.map": "https://panomixapp.s3.amazonaws.com/static/css/main.5506ad65.chunk.css.map",
     "static/js/2.749f2409.chunk.js.LICENSE.txt": "https://panomixapp.s3.amazonaws.com/static/js/2.749f2409.chunk.js.LICENSE.txt",
     "static/media/01.png": "https://panomixapp.s3.amazonaws.com/static/media/01.c56181af.png",
     "static/media/02.png": "https://panomixapp.s3.amazonaws.com/static/media/02.7a09b2a9.png",
@@ -34,7 +34,7 @@
     "static/js/runtime-main.9c61a787.js",
     "static/css/2.bf33bae2.chunk.css",
     "static/js/2.749f2409.chunk.js",
-    "static/css/main.2f25df62.chunk.css",
-    "static/js/main.edbee553.chunk.js"
+    "static/css/main.5506ad65.chunk.css",
+    "static/js/main.5e3ed75f.chunk.js"
   ]
 }

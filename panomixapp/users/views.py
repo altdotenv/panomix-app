@@ -208,7 +208,8 @@ class SendEmailToHost(APIView):
             'uid':urlsafe_base64_encode(force_bytes(user.pk)),
             'workplace_name':request.data['workplace'],
             'workplace':urlsafe_base64_encode(force_bytes(request.data['workplace'])),
-            'token': tokens.account_activation_token.make_token(user)
+            'token': tokens.account_activation_token.make_token(user),
+            'admin_user': admin_user.name
         }
         html_message = render_to_string('email/request_to_host.html', context)
         to_email = admin_user.email

@@ -4,6 +4,8 @@ django==2.2.0  # pyup: < 3.0  # https://www.djangoproject.com/
 django-environ==0.4.5  # https://github.com/joke2k/django-environ
 django-inlinecss==0.3.0
 django-cors-headers==3.2.1
+django-allauth==0.38.0  # https://github.com/pennersr/django-allauth
+argon2-cffi==19.1.0  # https://github.com/hynek/argon2_cffi
 
 # Django REST Framework
 djangorestframework==3.11.0  # https://github.com/encode/django-rest-framework

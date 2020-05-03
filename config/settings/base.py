@@ -78,7 +78,11 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "rest_framework",
     "corsheaders",
-    "django_inlinecss"
+    "django_inlinecss",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+
 ]
 
 LOCAL_APPS = [
